@@ -1,0 +1,29 @@
+import media from './media/media';
+
+var db = (function(){
+	var el = new Everlive('dmJhonVhIAcj1iJk');
+
+	var db = {
+		create: function(dataType, dataObj){
+			var data = el.data(dataType);
+			data.create(media.init(dataObj));
+		},
+		read: function(dataType){
+			var data = el.data(dataType),
+				query = new Everlive.Query();
+
+			return data.get(query)
+		    .then(function(data){
+		        return data.result;
+		    },
+		    function(error){
+		        return error;
+		    });
+		}
+	};
+
+	return db;
+	
+}());
+
+export default db;
