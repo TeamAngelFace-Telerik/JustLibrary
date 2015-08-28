@@ -9,16 +9,15 @@ var db = (function(){
 			data.create(media.init(dataObj));
 		},
 		read: function(dataType){
-			var data = el.data(dataType);
-			var result = 0;
-			var query = new Everlive.Query();
+			var data = el.data(dataType),
+				query = new Everlive.Query();
 
 			return data.get(query)
 		    .then(function(data){
-		        return JSON.stringify(data.result);
+		        return data.result;
 		    },
 		    function(error){
-		        return JSON.stringify(error);
+		        return error;
 		    });
 		}
 	};

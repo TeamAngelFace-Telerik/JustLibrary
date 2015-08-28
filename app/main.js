@@ -16,7 +16,7 @@ import db from './db-operations';
 
 var test = db.read('Media');
 test.then(function(data){
-	JSON.parse(data).forEach(function(item){
+	data.forEach(function(item){
 		document.body.innerHTML += 'Title: ' + item.title + ', duration: ' + item.duration + '<hr />';
 	});
 });
