@@ -1,5 +1,5 @@
 /* global System */
-import media from './media';
+import media from './media/media';
 
 var testObj = media.init({
 	title: 'test title',
