@@ -6,6 +6,7 @@ var Controller = (function () {
     var MUSIC_TITLE = 'Music';
     var VIDEOS_TITLE = 'Video';
     var BOOKS_TITLE = 'Books';
+    var SUBMIT_MEDIA_TITLE = 'Submit new media';
     var AVAILABLE_FILTERS = ['songs', 'videos', 'books'];
     var filter;
     var searchResults;
@@ -31,6 +32,10 @@ var Controller = (function () {
             ui.setTitle(BOOKS_TITLE);
             ui.printSearchResults(searchResults);
             filter = AVAILABLE_FILTERS[2];
+        },
+        submitMedia: function () {
+            ui.setTitle(SUBMIT_MEDIA_TITLE);
+            ui.printSubmitMediaForm();
         }
     };
 

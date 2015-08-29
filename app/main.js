@@ -62,6 +62,10 @@ $(function () {
         this.get('#/books', function () {
             appController.booksSearch();
         });
+
+        this.get('#/submit-media', function () {
+            appController.submitMedia();
+        });
     });
 
     app.run('#/home');
