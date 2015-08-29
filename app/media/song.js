@@ -1,4 +1,4 @@
-import media from './media/media'
+import media from './media/media';
 
 var song = (function (parent) {
     var song = Object.create(parent);
@@ -10,13 +10,13 @@ var song = (function (parent) {
 
             return this;
         },
-        duration: {
+        _duration: {
             get: function () {
-                return this._duration
+                return this.duration;
             },
             set: function (value) {
                 //validation
-                this._duration = value;
+                this.duration = value;
             }
         }
     });

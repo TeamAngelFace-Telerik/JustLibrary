@@ -13,40 +13,40 @@ var media = (function(){
 	};
 
 	Object.defineProperties(media, {
-		title: {
+		_title: {
 			get: function () {
-			  return this._title
+			  return this.title;
 			},
 			set: function (value) {
 			  //validation
-				this._title = value;
-			}
+				this.title = value;
+			},
 		},
-		description: {
+		_description: {
 			get: function () {
-				return this._description
+				return this.description;
 			},
 			set: function (value) {
 				//validation
-				this._description = value;
+				this.description = value;
 			}
 		},
-		rating: {
+		_rating: {
 			get: function () {
-				return this._rating
+				return this.rating;
 			},
 			set: function (value) {
 				//validation
-				this._rating = value;
+				this.rating = value;
 			}
 		},
-		genre: {
+		_genre: {
 			get: function () {
-				return this._genre
+				return this.genre;
 			},
 			set: function (value) {
 				//validation
-				this._genre = value;
+				this.genre = value;
 			}
 		}
 	});

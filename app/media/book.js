@@ -1,4 +1,4 @@
-import media from './media/media'
+import media from './media/media';
 
 var book = (function (parent) {
     var book = Object.create(parent);
@@ -11,22 +11,22 @@ var book = (function (parent) {
 
             return this;
         },
-        publisher: {
+        _publisher: {
             get: function () {
-                return this._publisher
+                return this.publisher;
             },
             set: function (value) {
                 //validation
-                this._publisher = value;
+                this.publisher = value;
             }
         },
-        trailer: {
+        _author: {
             get: function () {
-                return this._author
+                return this.author;
             },
             set: function (value) {
                 //validation
-                this._author = value;
+                this.author = value;
             }
         }
     });
