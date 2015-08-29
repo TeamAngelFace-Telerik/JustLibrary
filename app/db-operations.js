@@ -1,12 +1,10 @@
-import media from './media/media';
-
 var db = (function(){
 	var el = new Everlive('dmJhonVhIAcj1iJk');
 
 	var db = {
-		create: function(dataType, dataObj){
+		create: function(dataType, dataObj, successCb, errorCb){
 			var data = el.data(dataType);
-			data.create(dataObj);
+			data.create(dataObj).then(successCb, errorCb);
 		},
 		read: function(dataType){
 			var data = el.data(dataType),

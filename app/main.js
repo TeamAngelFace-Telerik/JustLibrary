@@ -4,50 +4,65 @@ import db from './db-operations';
 import _ from '../node_modules/underscore/underscore';
 import sammy from '../lib/sammy';
 import appController from './controller';
+import utils from './common/utils';
+import $ from '../../node_modules/jquery/dist/jquery.min';
 
-var testObj = media.init({
-    title: 'test title',
-    rating: 5,
-    description: 'Some description',
-    genre: 'blabla',
-    image: 'Image url',
-    url: 'media url'
-});
+$(function () {
+    var testObj = media.init({
+        title: 'test title',
+        rating: 5,
+        description: 'Some description',
+        genre: 'blabla',
+        image: 'Image url',
+        url: 'media url'
+    });
 
-// _.each(testObj, function(value, key){
-// 	console.log(key, ': ', value);
-// });
+    // _.each(testObj, function(value, key){
+    // 	console.log(key, ': ', value);
+    // });
 
-
-db.create('Media', testObj);
-
-var test = db.read('Media');
-test.then(function (data) {
-    _.each(data, function (item) {
-        _.each(item, function (value, key) {
-            console.log(key, ': ', value);
+    var test = db.read('Media');
+    test.then(function (data) {
+        _.each(data, function (item) {
+            _.each(item, function (value, key) {
+                console.log(key, ': ', value);
+            });
+            console.log('----------------------------------');
         });
-        console.log('----------------------------------');
-    });
-});
 
-var app = sammy('body', function () {
-    this.get('#/home', function () {
-        console.log('Call home!');
-        appController.loadHome();
-    });
+        // db.create('Media', testObj);
 
-    this.get('#/video', function () {
-        appController.videoSearch();
-    });
+        var test = db.read('Media');
+        test.then(function (data) {
+            _.each(data, function (item) {
+                _.each(item, function (value, key) {
+                    console.log(key, ': ', value);
+                });
+                console.log('----------------------------------');
+            });
+        });
 
-    this.get('#/music', function () {
-        appController.musicSearch();
+        $('button').on('click', utils.submitForm);
     });
 
-    this.get('#/books', function () {
-        appController.booksSearch();
-    });
-});
+    var app = sammy('body', function () {
+        this.get('#/home', function () {
+            console.log('Call home!');
+            appController.loadHome();
+        });
 
-app.run('#/home');
+        this.get('#/video', function () {
+            appController.videoSearch();
+        });
+
+        this.get('#/music', function () {
+            appController.musicSearch();
+        });
+
+        this.get('#/books', function () {
+            appController.booksSearch();
+        });
+    });
+
+    app.run('#/home');
+}());
