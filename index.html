@@ -3,10 +3,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Angel Face Media Catalog</title>
+	<link rel="stylesheet" href="app/common/main.css">
 </head>
 <body>
-	
-
+	<div id="form">
+		<form action="">
+			<label for="title">Enter media title: </label>
+			<input id="title" type="text" minlength="3" maxlength="100" value="" />
+			<br />
+			<label for="image">Enter image url: </label>
+			<input id="image" type="url" value="" />
+			<br />
+			<label for="description">Enter description: </label>
+			<input id="description" type="text" value="" />
+			<br />
+			<label for="url">Enter media url: </label>
+			<input id="url" type="url" value="" />
+			<br />
+			<label for="genre">Enter genre: </label>
+			<input id="genre" type="text" value="" />
+			<br />
+			<label for="rating">Enter rating: </label>
+			<input id="rating" type="number" value="" />
+			<br />
+			
+		</form>
+		<button>Submit</button>
+	</div>	
 	<script src="jspm_packages/system.js"></script>
 	<script src="config.js"></script>
 	<script src="https://bs-static.cdn.telerik.com/1.5.4/everlive.all.min.js"></script>

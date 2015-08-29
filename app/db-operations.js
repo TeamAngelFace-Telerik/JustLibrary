@@ -1,5 +1,3 @@
-import media from './media/media';
-
 var db = (function(){
 	var el = new Everlive('dmJhonVhIAcj1iJk');
 
