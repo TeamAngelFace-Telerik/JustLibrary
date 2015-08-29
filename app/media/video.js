@@ -1,4 +1,4 @@
-import media from './media/media'
+import media from './media/media';
 
 var video = (function (parent) {
     var video = Object.create(parent);
@@ -11,22 +11,22 @@ var video = (function (parent) {
 
             return this;
         },
-        duration: {
+        _duration: {
             get: function () {
-                return this._duration
+                return this.duration;
             },
             set: function (value) {
                 //validation
-                this._duration = value;
+                this.duration = value;
             }
         },
-        trailer: {
+        _trailer: {
             get: function () {
-                return this._trailer
+                return this.trailer;
             },
             set: function (value) {
                 //validation
-                this._trailer = value;
+                this.trailer = value;
             }
         }
     });
