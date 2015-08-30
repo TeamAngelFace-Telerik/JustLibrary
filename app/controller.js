@@ -37,6 +37,7 @@ var Controller = (function () {
         submitMedia: function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);
             ui.printSubmitMediaForm();
+            submit.setupAddMediaMenu();
         }
     };
 
