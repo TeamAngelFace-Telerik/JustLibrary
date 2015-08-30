@@ -11,6 +11,7 @@ import utils from './common/utils';
 import $ from '../../node_modules/jquery/dist/jquery.min';
 
 $(function () {
+
     var testMedia = media.init({
         title: 'test title',
         rating: 5,
@@ -108,8 +109,8 @@ $(function () {
         trailer: 'Trailer url'
     });    
 
-    db.create('Book', testBook, utils.printMedia('Book'));
-    db.create('Song', testSong, utils.printMedia('Song'));
-    db.create('Video', testVideo, utils.printMedia('Video'));
+    // db.create('Book', testBook, utils.printMedia('Book'));
+    // db.create('Song', testSong, utils.printMedia('Song'));
+    // db.create('Video', testVideo, utils.printMedia('Video'));
 
 }());

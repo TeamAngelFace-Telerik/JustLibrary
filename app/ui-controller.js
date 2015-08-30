@@ -18,7 +18,12 @@ var UI = (function () {
                 //error?
                 $.get('app/html-templates/submit-media.html', function (data) {
                     $('#content').html(data);
-                }));
+                }).then(function(){
+                    $('#duration-container').hide();
+                    $('#author-container').hide();
+                    $('#publisher-container').hide();
+                    $('#trailer-container').hide();
+                }));       
         }
     };
 

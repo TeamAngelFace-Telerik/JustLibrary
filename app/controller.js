@@ -1,5 +1,6 @@
 //import $ from 'https://code.jquery.com/jquery-2.1.4.min';
 import ui from './ui-controller';
+import submit from './submit-form-operations';
 
 var Controller = (function () {
     var HOME_TITLE = 'Welcome to JustLibrary';

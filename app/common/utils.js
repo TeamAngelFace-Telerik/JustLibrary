@@ -25,7 +25,7 @@ var utils = (function(){
 
 		newMedia = media.init(submitFormResult);
 		
-		db.create('Media', newMedia, function(){
+		db.create(mediaType, newMedia, function(){
 			return;
 		}, function(err){
 			console.log(err);
