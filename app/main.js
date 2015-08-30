@@ -112,8 +112,4 @@ $(function () {
     db.create('Song', testSong, utils.printMedia('Song'));
     db.create('Video', testVideo, utils.printMedia('Video'));
 
-    // utils.printMedia('Book');
-    // utils.printMedia('Song');
-    // utils.printMedia('Video');
-
 }());
