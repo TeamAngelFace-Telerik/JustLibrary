@@ -1,24 +1,76 @@
-<div id="form">
-    <form action="">
-        <label for="title">Enter media title: </label>
-        <input id="title" type="text" minlength="3" maxlength="100" value="" />
-        <br />
-        <label for="image">Enter image url: </label>
-        <input id="image" type="url" value="" />
-        <br />
-        <label for="description">Enter description: </label>
-        <input id="description" type="text" value="" />
-        <br />
-        <label for="url">Enter media url: </label>
-        <input id="url" type="url" value="" />
-        <br />
-        <label for="genre">Enter genre: </label>
-        <input id="genre" type="text" value="" />
-        <br />
-        <label for="rating">Enter rating: </label>
-        <input id="rating" type="number" value="" />
-        <br />
+<div class="col-md-offset-3  col-md-6">
+    <div class="well bs-component">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Add Media</legend>
+                <div class="form-group">
+                    <label for="title" class="col-lg-2 control-label">Title</label>
 
-    </form>
-    <button>Submit</button>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="title" placeholder="Title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-lg-2 control-label">Description</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="description" placeholder="Description">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image" class="col-lg-2 control-label">Image URL</label>
+
+                    <div class="col-lg-10">
+                        <input type="url" class="form-control" id="image" placeholder="Image URL">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-lg-2 control-label">Media URL</label>
+
+                    <div class="col-lg-10">
+                        <input type="url" class="form-control" id="url" placeholder="Media URL">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="genre" class="col-lg-2 control-label">Genre</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="genre" placeholder="Genre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rating" class="col-lg-2 control-label">Rating</label>
+
+                    <div class="col-lg-10">
+                        <input type="number" class="form-control" id="rating" placeholder="Rating">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="publisher" class="col-lg-2 control-label">Publisher</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="publisher" placeholder="Publisher">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="author" class="col-lg-2 control-label">Author</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="author" placeholder="Author">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="duration" class="col-lg-2 control-label">Duration</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="duration" placeholder="Duration">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-offset-6">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
