@@ -1,14 +1,16 @@
-import media from './media/media';
+import media from './media';
 
 var song = (function (parent) {
     var song = Object.create(parent);
 
     Object.defineProperties(song, {
-        init: function (mediaObj) {
-            parent.init.call(this);
-            this._duration = mediaObj.duration;
+        init: {
+            value: function (mediaObj) {
+                parent.init.call(this, mediaObj);
+                this._duration = mediaObj.duration;
 
-            return this;
+                return this;
+            }
         },
         _duration: {
             get: function () {

@@ -1,5 +1,5 @@
 import $ from '../../node_modules/jquery/dist/jquery.min';
-import media from '../media/media';
+import media from '../media/';
 import db from '../db-operations';
 
 var utils = (function(){
@@ -32,9 +32,23 @@ var utils = (function(){
 		});
 	};
 
+	var printMedia = function(mediaType){
+		var media = db.read(mediaType);
+    	media.then(function (data) {
+        console.log(mediaType + 's: ');
+        _.each(data, function (item) {
+            _.each(item, function (value, key) {
+                console.log(key, ': ', value);
+            });
+            console.log('----------------------------------');
+        });
+    });
+	};
+
 	return {
 		isValid,
-		submitForm
+		submitForm,
+		printMedia
 	};
 }());
 

@@ -1,15 +1,17 @@
-import media from './media/media';
+import media from './media';
 
 var book = (function (parent) {
     var book = Object.create(parent);
 
     Object.defineProperties(book, {
-        init: function (mediaObj) {
-            parent.init.call(this);
-            this._publisher = mediaObj.publisher;
-            this._author = mediaObj.author;
+        init: {
+            value: function (mediaObj) {
+                parent.init.call(this, mediaObj);
+                this._publisher = mediaObj.publisher;
+                this._author = mediaObj.author;
 
-            return this;
+                return this;
+            }
         },
         _publisher: {
             get: function () {
@@ -30,7 +32,6 @@ var book = (function (parent) {
             }
         }
     });
-
     return book;
 }(media));
 

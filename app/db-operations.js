@@ -10,7 +10,7 @@ var db = (function(){
 			var data = el.data(dataType),
 				query = new Everlive.Query();
 
-			return data.get(query.select('title', 'rating', 'descriotion', 'genre', 'image', 'url'))
+			return data.get(query.select('title', 'rating', 'description', 'genre', 'image', 'url'))
 		    .then(function(data){
 		        return data.result;
 		    },

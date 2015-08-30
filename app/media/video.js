@@ -1,15 +1,17 @@
-import media from './media/media';
+import media from './media';
 
 var video = (function (parent) {
     var video = Object.create(parent);
 
     Object.defineProperties(video, {
-        init: function (mediaObj) {
-            parent.init.call(this);
-            this._duration = mediaObj.duration;
-            this._trailer = mediaObj.url;
+        init: {
+            value: function (mediaObj) {
+                parent.init.call(this, mediaObj);
+                this._duration = mediaObj.duration;
+                this._trailer = mediaObj.trailer;
 
-            return this;
+                return this;
+            }
         },
         _duration: {
             get: function () {
