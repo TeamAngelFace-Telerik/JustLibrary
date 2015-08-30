@@ -22,6 +22,7 @@ var submit = (function(){
 			$('#publisher-container').hide();
 			$('#trailer-container').hide();
 			$('button[type="submit"]').unbind().on('click', addSong);
+			$('#content').show();
 		});
 
 		$('#submit-video-form').on('click', function(){
@@ -31,6 +32,7 @@ var submit = (function(){
 			$('#publisher-container').hide();
 			$('#trailer-container').show();
 			$('button[type="submit"]').unbind().on('click', addVideo);
+			$('#content').show();
 		});
 
 		$('#submit-book-form').on('click', function(){
@@ -40,6 +42,7 @@ var submit = (function(){
 			$('#publisher-container').show();
 			$('#trailer-container').hide();
 			$('button[type="submit"]').unbind().on('click', addBook);
+			$('#content').show();
 		});	
 	};
 
