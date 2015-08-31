@@ -9,9 +9,11 @@ var UI = (function () {
         },
         printHome: function () {
             $('#content').html(HomeText);
+            clicked = false;
         },
         printSearchResults: function (results) {
             $('#content').html('Search is Not implemented!');
+            clicked = false;
         },
         printSubmitMediaForm: function () {
             $.when(

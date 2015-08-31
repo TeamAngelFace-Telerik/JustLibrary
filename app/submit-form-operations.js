@@ -51,9 +51,11 @@ var submit = (function(){
 					'top': '200px',
 					'border': '1px solid #fff'
 				}).text(data).appendTo($('body')).fadeIn(2000).fadeOut(2000);	
+
 			} else {
 				$('#success-alert').text(data).fadeIn(2000).fadeOut(2000);
 			}
+			$('#clear-button').trigger('click');
 		});
 	};
 
