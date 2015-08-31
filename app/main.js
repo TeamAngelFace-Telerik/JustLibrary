@@ -4,7 +4,7 @@ import book from './media/book';
 import song from './media/song';
 import video from './media/video';
 import db from './db-operations';
-import _ from '../node_modules/underscore/underscore';
+import _ from '../node_modules/underscore/underscore-min';
 import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 import appController from './controller';
 import utils from './common/utils';
