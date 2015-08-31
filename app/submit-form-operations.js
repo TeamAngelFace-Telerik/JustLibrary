@@ -43,17 +43,17 @@ var submit = (function(){
 					'font-size': '20px',
 					'padding-top': '30px',
 					'text-align': 'center',
-					color: '#fff',
+					color: 'green',
 					display: 'none',
-					background: '#000',
+					background: '#DFF0D8',
 					'border-radius': '10px',
 					'left': '500px',
 					'top': '200px',
 					'border': '1px solid #fff'
-				}).text(data).appendTo($('body')).fadeIn(2000).fadeOut(2000);	
+				}).text(data).appendTo($('body')).fadeIn(3000).fadeOut(2000);
 
 			} else {
-				$('#success-alert').text(data).fadeIn(2000).fadeOut(2000);
+				$('#success-alert').text(data).fadeIn(3000).fadeOut(2000);
 			}
 			$('#clear-button').trigger('click');
 		});
