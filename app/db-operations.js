@@ -4,7 +4,7 @@ var db = (function(){
 	var db = {
 		create: function(dataType, dataObj, successCb, errorCb){
 			var data = el.data(dataType);
-			data.create(dataObj).then(successCb, errorCb);
+			return data.create(dataObj).then(successCb, errorCb);
 		},
 		read: function(dataType){
 			var data = el.data(dataType),

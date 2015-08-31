@@ -30,9 +30,30 @@ var submit = (function(){
 		}
 
 		db.create(mediaTypesNames[option], newMedia, function(){
-			return;
+			return mediaTypesNames[option] + ' added successfully!';
 		}, function(err){
 			console.log(err);
+		}).then(function(data){
+			if(!($('#success-alert').length)) {
+				$('<div />').attr('id', 'success-alert').css({
+					position: 'absolute',
+					width: '250px',
+					height: '125px',
+					'font-family': 'Arial',
+					'font-size': '20px',
+					'padding-top': '30px',
+					'text-align': 'center',
+					color: '#fff',
+					display: 'none',
+					background: '#000',
+					'border-radius': '10px',
+					'left': '500px',
+					'top': '200px',
+					'border': '1px solid #fff'
+				}).text(data).appendTo($('body')).fadeIn(2000).fadeOut(2000);	
+			} else {
+				$('#success-alert').text(data).fadeIn(2000).fadeOut(2000);
+			}
 		});
 	};
 
