@@ -63,10 +63,14 @@ var submit = (function(){
 
 		$('#submit-music-form').on('click', function(){
 			$('legend').text('Add song');
-			$('#duration-container').show().attr('required', 'required');
-			$('#author-container').hide().removeAttr('required');
-			$('#publisher-container').hide().removeAttr('required');
-			$('#trailer-container').hide().removeAttr('required');
+			$('#duration-container').show();
+			$('#duration').attr('required', 'required');
+			$('#author-container').hide();
+			$('#author').removeAttr('required');
+			$('#publisher-container').hide();
+			$('#publisher').removeAttr('required');
+			$('#trailer-container').hide();
+			$('#trailer').removeAttr('required');
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(0);
 			// });
@@ -79,10 +83,14 @@ var submit = (function(){
 
 		$('#submit-video-form').on('click', function(){
 			$('legend').text('Add video');
-			$('#duration-container').prop('disabled', false).show();
-			$('#author-container').prop('disabled', true).hide();
-			$('#publisher-container').prop('disabled', true).hide();
-			$('#trailer-container').prop('disabled', false).show();
+			$('#duration-container').show();
+			$('#duration').attr('required', 'required');
+			$('#author-container').hide();
+			$('#author').removeAttr('required');
+			$('#publisher-container').hide();
+			$('#publisher').removeAttr('required');
+			$('#trailer-container').show();
+			$('#trailer').attr('required', 'required');
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(1);
 			// });
@@ -95,10 +103,14 @@ var submit = (function(){
 
 		$('#submit-book-form').on('click', function(){
 			$('legend').text('Add book');
-			$('#duration-container').hide().removeAttr('required');
-			$('#author-container').show().attr('required', 'required');
-			$('#publisher-container').show().attr('required', 'required');
-			$('#trailer-container').hide().removeAttr('required');
+			$('#duration-container').hide();
+			$('#duration').removeAttr('required');
+			$('#author-container').show();
+			$('#author').attr('required', 'required');
+			$('#publisher-container').show();
+			$('#publisher').attr('required', 'required');
+			$('#trailer-container').hide();
+			$('#trailer').removeAttr('required');
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(2);
 			// });
