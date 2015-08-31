@@ -5,7 +5,7 @@ import song from './media/song';
 import video from './media/video';
 import db from './db-operations';
 import _ from '../node_modules/underscore/underscore';
-import sammy from '../lib/sammy';
+import sammy from '../lib/sammy.min';
 import appController from './controller';
 import utils from './common/utils';
 import $ from '../../node_modules/jquery/dist/jquery.min';
