@@ -1,5 +1,6 @@
 import $ from '../../node_modules/jquery/dist/jquery.min';
 import media from '../media/';
+import _ from '../../node_modules/underscore/underscore';
 import db from '../db-operations';
 
 var utils = (function(){
@@ -10,7 +11,7 @@ var utils = (function(){
 		if (typeof(input) === 'string') {
 			return input.length >= min && input.length <= max;	
 		}
-	    return input >= minLength && input <= maxLength;
+	    return input >= min && input <= max;
 	};
 
 	var submitForm = function(){

@@ -7,8 +7,8 @@ import db from './db-operations';
 var submit = (function(){
 	var addMedia = function(option){
 		var mediaTypes = [song, video, book],
-			mediaTypesNames = ['Song', 'Video', 'Book'],
-			submitFormResult = {
+		mediaTypesNames = ['Song', 'Video', 'Book'],
+		submitFormResult = {
 			title: $('#title').val(),
 			description: $('#description').val(),
 			image: $('#image').val(),
@@ -43,56 +43,68 @@ var submit = (function(){
 					'font-size': '20px',
 					'padding-top': '30px',
 					'text-align': 'center',
-					color: 'green',
+					color: '#fff',
 					display: 'none',
-					background: '#DFF0D8',
+					background: '#000',
 					'border-radius': '10px',
 					'left': '500px',
 					'top': '200px',
 					'border': '1px solid #fff'
-				}).text(data).appendTo($('body')).fadeIn(3000).fadeOut(2000);
+				}).text(data).appendTo($('body')).fadeIn(2000).fadeOut(2000);	
 
 			} else {
-				$('#success-alert').text(data).fadeIn(3000).fadeOut(2000);
+				$('#success-alert').text(data).fadeIn(2000).fadeOut(2000);
 			}
-			$('#clear-button').trigger('click');
-		});
+			// $('#clear-button').trigger('click');
+		});	
 	};
 
 	var setupAddMediaMenu = function(){
 
 		$('#submit-music-form').on('click', function(){
 			$('legend').text('Add song');
-			$('#duration-container').show();
-			$('#author-container').hide();
-			$('#publisher-container').hide();
-			$('#trailer-container').hide();
-			$('button[type="submit"]').unbind().on('click', function(){
+			$('#duration-container').show().attr('required', 'required');
+			$('#author-container').hide().removeAttr('required');
+			$('#publisher-container').hide().removeAttr('required');
+			$('#trailer-container').hide().removeAttr('required');
+			// $('button[type="submit"]').unbind().on('click', function(){
+			// 	addMedia(0);
+			// });
+			$('#submit-form').submit(function(){
 				addMedia(0);
+				$('#clear-button').trigger('click');
 			});
 			$('#content').show();
 		});
 
 		$('#submit-video-form').on('click', function(){
 			$('legend').text('Add video');
-			$('#duration-container').show();
-			$('#author-container').hide();
-			$('#publisher-container').hide();
-			$('#trailer-container').show();
-			$('button[type="submit"]').unbind().on('click', function(){
+			$('#duration-container').prop('disabled', false).show();
+			$('#author-container').prop('disabled', true).hide();
+			$('#publisher-container').prop('disabled', true).hide();
+			$('#trailer-container').prop('disabled', false).show();
+			// $('button[type="submit"]').unbind().on('click', function(){
+			// 	addMedia(1);
+			// });
+			$('#submit-form').submit(function(){
 				addMedia(1);
+				$('#clear-button').trigger('click');
 			});
 			$('#content').show();
 		});
 
 		$('#submit-book-form').on('click', function(){
 			$('legend').text('Add book');
-			$('#duration-container').hide();
-			$('#author-container').show();
-			$('#publisher-container').show();
-			$('#trailer-container').hide();
-			$('button[type="submit"]').unbind().on('click', function(){
+			$('#duration-container').hide().removeAttr('required');
+			$('#author-container').show().attr('required', 'required');
+			$('#publisher-container').show().attr('required', 'required');
+			$('#trailer-container').hide().removeAttr('required');
+			// $('button[type="submit"]').unbind().on('click', function(){
+			// 	addMedia(2);
+			// });
+			$('#submit-form').submit(function(){
 				addMedia(2);
+				$('#clear-button').trigger('click');
 			});
 			$('#content').show();
 		});	
