@@ -1,16 +1,39 @@
 import $ from '../../node_modules/jquery/dist/jquery.min';
+import book from './media/book';
+import song from './media/song';
+import video from './media/video';
+import db from './db-operations';
 
 var submit = (function(){
-	var addSong = function(songObj){
+	var addMedia = function(option){
+		var mediaTypes = [song, video, book],
+			mediaTypesNames = ['Song', 'Video', 'Book'],
+			submitFormResult = {
+			title: $('#title').val(),
+			description: $('#description').val(),
+			image: $('#image').val(),
+			url: $('#url').val(),
+			genre: $('#genre').val(),
+			rating: $('#rating').val()*1,
+		},
 
-	};
+		newMedia = mediaTypes[option].init(submitFormResult);
+		
+		if(option !== 2){
+			newMedia.duration = $('#duration').val();
+			if (option) {
+				newMedia.trailer = $('#trailer').val();
+			}
+		} else{
+			newMedia.author = $('#author').val();
+			newMedia.publisher = $('#publisher').val();
+		}
 
-	var addVideo = function(videoObj){
-
-	};
-
-	var addBook = function(bookObj){
-
+		db.create(mediaTypesNames[option], newMedia, function(){
+			return;
+		}, function(err){
+			console.log(err);
+		});
 	};
 
 	var setupAddMediaMenu = function(){
@@ -21,7 +44,9 @@ var submit = (function(){
 			$('#author-container').hide();
 			$('#publisher-container').hide();
 			$('#trailer-container').hide();
-			$('button[type="submit"]').unbind().on('click', addSong);
+			$('button[type="submit"]').unbind().on('click', function(){
+				addMedia(0);
+			});
 			$('#content').show();
 		});
 
@@ -31,7 +56,9 @@ var submit = (function(){
 			$('#author-container').hide();
 			$('#publisher-container').hide();
 			$('#trailer-container').show();
-			$('button[type="submit"]').unbind().on('click', addVideo);
+			$('button[type="submit"]').unbind().on('click', function(){
+				addMedia(1);
+			});
 			$('#content').show();
 		});
 
@@ -41,7 +68,9 @@ var submit = (function(){
 			$('#author-container').show();
 			$('#publisher-container').show();
 			$('#trailer-container').hide();
-			$('button[type="submit"]').unbind().on('click', addBook);
+			$('button[type="submit"]').unbind().on('click', function(){
+				addMedia(2);
+			});
 			$('#content').show();
 		});	
 	};

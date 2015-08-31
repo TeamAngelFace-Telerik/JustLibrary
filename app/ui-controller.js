@@ -14,8 +14,8 @@ var UI = (function () {
             $('#content').html('Search is Not implemented!');
         },
         printSubmitMediaForm: function () {
-            // $.when(
-                //error?
+            $.when(
+                // error?
                 
                 $.get('app/html-templates/submit-media.html', function (data) {
                     if(!clicked){
@@ -30,7 +30,7 @@ var UI = (function () {
                         $('#trailer-container').hide();    
                     }
                     clicked = true;
-                });//);       
+                }));       
         }
     };
 
