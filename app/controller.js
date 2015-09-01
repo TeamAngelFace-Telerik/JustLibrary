@@ -21,8 +21,9 @@ var Controller = (function () {
         },
         musicSearch: function () {
             ui.setTitle(MUSIC_TITLE);
-            ui.printSearchResults(searchResults);
-            filter = AVAILABLE_FILTERS[0];
+            ui.printMusic();
+            // ui.printSearchResults(searchResults);
+            // filter = AVAILABLE_FILTERS[0];
         },
         videoSearch: function () {
             ui.setTitle(VIDEOS_TITLE);
