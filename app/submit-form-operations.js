@@ -74,7 +74,7 @@ var submit = (function(){
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(0);
 			// });
-			$('#submit-form').submit(function(){
+			$('#submit-form').unbind('submit').submit(function(){
 				addMedia(0);
 				$('#clear-button').trigger('click');
 			});
@@ -94,7 +94,7 @@ var submit = (function(){
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(1);
 			// });
-			$('#submit-form').submit(function(){
+			$('#submit-form').unbind('submit').submit(function(){
 				addMedia(1);
 				$('#clear-button').trigger('click');
 			});
@@ -114,7 +114,7 @@ var submit = (function(){
 			// $('button[type="submit"]').unbind().on('click', function(){
 			// 	addMedia(2);
 			// });
-			$('#submit-form').submit(function(){
+			$('#submit-form').unbind('submit').submit(function(){
 				addMedia(2);
 				$('#clear-button').trigger('click');
 			});
