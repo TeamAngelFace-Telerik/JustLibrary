@@ -4,8 +4,7 @@ import _ from '../node_modules/underscore/underscore';
 import db from './db-operations';
 
 var UI = (function() {
-    var HomeText = '<p>Lorem ipsum dolor sit amet, no integre mnesarchum vis. Regione virtute saperet at vel. Ne vim aeque molestiae. Dicit platonem inciderint per in. Ex his augue interpretaris.</p><p>No pro natum sadipscing, te eam quando probatus persequeris. Quo iudico facilisis te, vis mollis detracto et, an pro oratio adversarium. Denique mentitum eum eu. Id cum pericula hendrerit constituto, ea viris ponderum ius. Mei quot case antiopam ne.</p>',
-        clicked = false,
+    var clicked = false,
         htmlTemplate;
 
     $.get('app/html-templates/media-item-template.html', function (data) {
@@ -29,8 +28,11 @@ var UI = (function() {
             $('#page-title').html(title);
         },
         printHome: function () {
-            $('#content').html(HomeText);
-            clicked = false;
+            $.get('app/html-templates/home.html', function (data) {
+                $('#content').html(data);
+                clicked = false;
+
+        })
         },
         printMusic: function () {
             $('#content').html('');
