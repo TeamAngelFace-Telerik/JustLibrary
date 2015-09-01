@@ -47,13 +47,11 @@ var Controller = (function () {
             }
 
             $('#submit-form').on('blur', 'input', function () {
-                var yourObject = $('#submit-form').serializeObject();
-                console.log('save in local storrage');
-                localStorage.savedForm = JSON.stringify(yourObject);
+                var formObject = $('#submit-form').serializeObject();
+                localStorage.savedForm = JSON.stringify(formObject);
             });
 
-            $('#submit-form').on('click', ':submit', function () {
-                console.log('clear local storrage');
+            $('#submit-form').on('submit reset', function () {
                 localStorage.removeItem('savedForm');
             });
         }
@@ -66,10 +64,10 @@ var Controller = (function () {
     function fillForm(formObject) {
         var $submitForm = $('#submit-form');
         for (var key in formObject) {
-            $submitForm.find('#' + key).val(formObject[key])
+            $submitForm.find('#' + key).val(formObject[key]);
         }
-
     }
+
     $.fn.serializeObject = function () {
         var formData = {};
         var formArray = this.serializeArray();
