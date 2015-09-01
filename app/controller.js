@@ -1,6 +1,7 @@
 //import $ from 'https://code.jquery.com/jquery-2.1.4.min';
 import ui from './ui-controller';
 import submit from './submit-form-operations';
+import $ from '../../node_modules/jquery/dist/jquery.min';
 
 var Controller = (function () {
     var HOME_TITLE = 'Welcome to JustLibrary';
@@ -39,12 +40,45 @@ var Controller = (function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);
             ui.printSubmitMediaForm();
             submit.setupAddMediaMenu();
+
+            if (localStorage.savedForm !== undefined) {
+                var formObject = JSON.parse(localStorage.savedForm);
+                fillForm(formObject);
+            }
+
+            $('#submit-form').on('blur', 'input', function () {
+                var yourObject = $('#submit-form').serializeObject();
+                console.log('save in local storrage');
+                localStorage.savedForm = JSON.stringify(yourObject);
+            });
+
+            $('#submit-form').on('click', ':submit', function () {
+                console.log('clear local storrage');
+                localStorage.removeItem('savedForm');
+            });
         }
     };
 
     function search(options) {
         throw 'Not implemented!';
     }
+
+    function fillForm(formObject) {
+        var $submitForm = $('#submit-form');
+        for (var key in formObject) {
+            $submitForm.find('#' + key).val(formObject[key])
+        }
+
+    }
+    $.fn.serializeObject = function () {
+        var formData = {};
+        var formArray = this.serializeArray();
+
+        for (var i = 0, n = formArray.length; i < n; ++i)
+            formData[formArray[i].name] = formArray[i].value;
+
+        return formData;
+    };
 
     return Controller;
 }());
