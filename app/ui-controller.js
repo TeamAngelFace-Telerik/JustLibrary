@@ -35,6 +35,16 @@ var UI = (function() {
             clicked = false;
             createMediaItems('Song');
         },
+        printVideo: function () {
+            $('#content').html('');
+            clicked = false;
+            createMediaItems('Video');
+        },
+        printBooks: function () {
+            $('#content').html('');
+            clicked = false;
+            createMediaItems('Book');
+        },
         printSearchResults: function (results) {
             $('#content').html('Search is Not implemented!');
             clicked = false;
@@ -57,8 +67,7 @@ var UI = (function() {
                     }
                     clicked = true;
                 }));       
-        },
-        
+        }
     };
 
     return UI;
