@@ -13,14 +13,23 @@ var UI = (function() {
 
 
     function createMediaItems(mediaType) {
-        var items = db.read(mediaType);
-
+        var items = db.read(mediaType),
+            $content = $('#content');
         items.then(function(data) {
+            $content.html('');
             _.each(data, function (item) {
                 var itemHtml = htmlTemplate(item);
-                $('#content').append(itemHtml);
+                $content.append(itemHtml);
+            }, function(err){
+                $content.append('Error reading database: ' + err);
             });
         });
+
+        $('<div />').attr('id', 'loading').text('LOADING').css({
+            'margin-left': '40%',
+            'color': '#fff',
+            'font-size':'50px'
+        }).appendTo($content).fadeIn(10).fadeOut(10).fadeIn(10);
     }
 
     var UI = {
@@ -28,16 +37,16 @@ var UI = (function() {
             $('#page-title').html(title);
         },
         printHome: function () {
+            clicked = false;
             $.get('app/html-templates/home.html', function (data) {
                 $('#content').html(data);
-                clicked = false;
-
-        })
+            });
         },
         printMusic: function () {
             $('#content').html('');
             clicked = false;
             createMediaItems('Song');
+
         },
         printVideo: function () {
             $('#content').html('');

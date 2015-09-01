@@ -33,7 +33,7 @@ var submit = (function(){
 		db.create(mediaTypesNames[option], newMedia, function(){
 			return mediaTypesNames[option] + ' added successfully!';
 		}, function(err){
-			console.log(err);
+			return err;
 		}).then(function(data){
 			if(!($('#success-alert').length)) {
 				$('<div />').attr('id', 'success-alert').css({
@@ -46,17 +46,39 @@ var submit = (function(){
 					'text-align': 'center',
 					color: '#fff',
 					display: 'none',
-					background: '#000',
+					background: 'green',
 					'border-radius': '10px',
 					'left': '500px',
 					'top': '200px',
 					'border': '1px solid #fff'
-				}).text(data).appendTo($('body')).fadeIn(2000).fadeOut(2000);	
+				}).text(data).appendTo($('body')).fadeIn(1000).fadeOut(1000);	
 
 			} else {
-				$('#success-alert').text(data).fadeIn(2000).fadeOut(2000);
+				$('#success-alert').text(data).fadeIn(1000).fadeOut(1000);
 			}
 			// $('#clear-button').trigger('click');
+		}, function(err){
+			if(!($('#error-alert').length)) {
+				$('<div />').attr('id', 'error-alert').css({
+					position: 'absolute',
+					width: '250px',
+					height: '125px',
+					'font-family': 'Arial',
+					'font-size': '20px',
+					'padding-top': '30px',
+					'text-align': 'center',
+					color: '#fff',
+					display: 'none',
+					background: 'red',
+					'border-radius': '10px',
+					'left': '500px',
+					'top': '200px',
+					'border': '1px solid #fff'
+				}).text(data).appendTo($('body')).fadeIn(1000).fadeOut(1000);	
+
+			} else {
+				$('#error-alert').text(err).fadeIn(1000).fadeOut(1000);
+			}
 		});	
 	};
 

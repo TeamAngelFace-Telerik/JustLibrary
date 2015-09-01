@@ -17,8 +17,8 @@ var Controller = (function () {
         loadHome: function () {
             ui.setTitle(HOME_TITLE);
             ui.printHome();
-            filter = '';
-            searchResults = '';
+            // filter = '';
+            // searchResults = '';
         },
         musicSearch: function () {
             ui.setTitle(MUSIC_TITLE);
