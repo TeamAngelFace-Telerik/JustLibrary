@@ -3,54 +3,54 @@ import media from '../media/';
 import _ from '../../node_modules/underscore/underscore';
 import db from '../db-operations';
 
-var utils = (function () {
-    var isValid = function isValid(input, min, max) {
-        if (typeof (input) !== 'string' && typeof (input) !== 'number') {
-            return false;
-        }
-        if (typeof (input) === 'string') {
-            return input.length >= min && input.length <= max;
-        }
-        return input >= min && input <= max;
-    };
+var utils = (function(){
+	var isValid = function isValid(input, min, max) {
+		if(typeof(input) !== 'string' && typeof(input) !== 'number'){
+			return false;
+		}    
+		if (typeof(input) === 'string') {
+			return input.length >= min && input.length <= max;	
+		}
+	    return input >= min && input <= max;
+	};
 
-    var submitForm = function () {
-        var submitFormResult = {
-                title: $('#title').val(),
-                description: $('#description').val(),
-                image: $('#image').val(),
-                url: $('#url').val(),
-                genre: $('#genre').val(),
-                rating: $('#rating').val() * 1
-            },
+	var submitForm = function(){
+		var submitFormResult = {
+			title: $('#title').val(),
+			description: $('#description').val(),
+			image: $('#image').val(),
+			url: $('#url').val(),
+			genre: $('#genre').val(),
+			rating: $('#rating').val()*1
+		},
 
-            newMedia = media.init(submitFormResult);
+		newMedia = media.init(submitFormResult);
+		
+		db.create(mediaType, newMedia, function(){
+			return;
+		}, function(err){
+			console.log(err);
+		});
+	};
 
-        db.create(mediaType, newMedia, function () {
-            return;
-        }, function (err) {
-            console.log(err);
-        });
-    };
-
-    var printMedia = function (mediaType) {
-        var media = db.read(mediaType);
-        media.then(function (data) {
-            console.log(mediaType + 's: ');
-            _.each(data, function (item) {
-                _.each(item, function (value, key) {
-                    console.log(key, ': ', value);
-                });
-                console.log('----------------------------------');
+	var printMedia = function(mediaType){
+		var media = db.read(mediaType);
+    	media.then(function (data) {
+        console.log(mediaType + 's: ');
+        _.each(data, function (item) {
+            _.each(item, function (value, key) {
+                console.log(key, ': ', value);
             });
+            console.log('----------------------------------');
         });
-    };
+    });
+	};
 
-    return {
-        isValid,
-        submitForm,
-        printMedia
-    };
+	return {
+		isValid,
+		submitForm,
+		printMedia
+	};
 }());
 
 export default utils;

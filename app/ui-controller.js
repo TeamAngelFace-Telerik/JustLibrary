@@ -4,15 +4,17 @@ import _ from '../node_modules/underscore/underscore';
 import db from './db-operations';
 
 var UI = (function() {
-    var HomeText = '<p>Lorem ipsum dolor sit amet, no integre mnesarchum vis. Regione virtute saperet at vel. Ne vim aeque molestiae. Dicit platonem inciderint per in. Ex his augue interpretaris.</p><p>No pro natum sadipscing, te eam quando probatus persequeris. Quo iudico facilisis te, vis mollis detracto et, an pro oratio adversarium. Denique mentitum eum eu. Id cum pericula hendrerit constituto, ea viris ponderum ius. Mei quot case antiopam ne.</p>';
-    var clicked = false;
+    var HomeText = '<p>Lorem ipsum dolor sit amet, no integre mnesarchum vis. Regione virtute saperet at vel. Ne vim aeque molestiae. Dicit platonem inciderint per in. Ex his augue interpretaris.</p><p>No pro natum sadipscing, te eam quando probatus persequeris. Quo iudico facilisis te, vis mollis detracto et, an pro oratio adversarium. Denique mentitum eum eu. Id cum pericula hendrerit constituto, ea viris ponderum ius. Mei quot case antiopam ne.</p>',
+        clicked = false,
+        htmlTemplate;
+
+    $.get('app/html-templates/media-item-template.html', function (data) {
+        htmlTemplate = Handlebars.compile(data);
+    });
+
 
     function createMediaItems(mediaType) {
         var items = db.read(mediaType);
-        var htmlTemplate;
-        $.get('app/html-templates/media-item-template.html', function (data) {
-            htmlTemplate = Handlebars.compile(data);
-        });  
 
         items.then(function(data) {
             _.each(data, function (item) {
@@ -67,7 +69,8 @@ var UI = (function() {
                     }
                     clicked = true;
                 }));       
-        }
+        },
+        
     };
 
     return UI;

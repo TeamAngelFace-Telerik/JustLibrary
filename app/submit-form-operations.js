@@ -29,7 +29,7 @@ var submit = (function(){
 			newMedia.author = $('#author').val();
 			newMedia.publisher = $('#publisher').val();
 		}
-		console.log(newMedia);
+		// console.log(newMedia);
 		db.create(mediaTypesNames[option], newMedia, function(){
 			return mediaTypesNames[option] + ' added successfully!';
 		}, function(err){
