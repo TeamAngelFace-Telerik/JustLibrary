@@ -28,13 +28,15 @@ var Controller = (function () {
         },
         videoSearch: function () {
             ui.setTitle(VIDEOS_TITLE);
-            ui.printSearchResults(searchResults);
-            filter = AVAILABLE_FILTERS[1];
+            ui.printVideo();
+            // ui.printSearchResults(searchResults);
+            // filter = AVAILABLE_FILTERS[1];
         },
         booksSearch: function () {
             ui.setTitle(BOOKS_TITLE);
-            ui.printSearchResults(searchResults);
-            filter = AVAILABLE_FILTERS[2];
+            ui.printBooks();
+            // ui.printSearchResults(searchResults);
+            // filter = AVAILABLE_FILTERS[2];
         },
         submitMedia: function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);
