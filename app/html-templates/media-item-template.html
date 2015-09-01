@@ -1,0 +1,18 @@
+<div class="single-item-container">
+	<div class="image-container">
+		<img src="{{image}}" alt="{{title}}" class="item-image" />
+	</div>
+	<div class="info-container">
+		<ul class="item-info-list">
+			<li>Title: {{title}}</li>
+			{{#if author}}
+			<li>Author: {{author}}</li>
+			{{/if}}
+			<li>Description: {{description}}</li>
+			<li>Rating: {{rating}}</li>
+			{{#if duration}}
+			<li>Duration: {{duration}}</li>
+			{{/if}}
+		</ul>
+	</div>
+</div>

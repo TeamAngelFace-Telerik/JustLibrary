@@ -1,0 +1,19 @@
+{
+  "name": "Teamwork",
+  "version": "0.0.0",
+  "authors": [
+    "Angel Face team"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "everlive": "~1.5.4",
+    "handlebars": "~3.0.3"
+  }
+}
