@@ -3,6 +3,7 @@ import book from './media/book';
 import song from './media/song';
 import video from './media/video';
 import db from './db-operations';
+import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 
 var submit = (function(){
 	var addMedia = function(option){
@@ -16,8 +17,8 @@ var submit = (function(){
 			genre: $('#genre').val(),
 			rating: $('#rating').val()*1,
 		},
-
 		newMedia = mediaTypes[option].init(submitFormResult);
+		newMedia.Id = null;
 		
 		if(option !== 2){
 			newMedia.duration = $('#duration').val();
@@ -28,7 +29,7 @@ var submit = (function(){
 			newMedia.author = $('#author').val();
 			newMedia.publisher = $('#publisher').val();
 		}
-
+		console.log(newMedia);
 		db.create(mediaTypesNames[option], newMedia, function(){
 			return mediaTypesNames[option] + ' added successfully!';
 		}, function(err){
