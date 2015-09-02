@@ -3,7 +3,7 @@ import Handlebars from '../bower_components/handlebars/handlebars.min';
 import _ from '../node_modules/underscore/underscore';
 import db from './db-operations';
 
-var UI = (function() {
+var UI = (function () {
     var clicked = false,
         htmlTemplate;
 
@@ -15,12 +15,17 @@ var UI = (function() {
     function createMediaItems(mediaType) {
         var items = db.read(mediaType),
             $content = $('#content');
-        items.then(function(data) {
+        items.then(function (data) {
             $content.html('');
             _.each(data, function (item) {
+                item.hasVideo = (item.url.indexOf('youtube.com/watch?v=') > -1);
+                if(item.hasVideo){
+                    item.watchVideo = item.url.replace('www.youtube.com/watch?v=', 'www.youtube.com/embed/');
+                }
+
                 var itemHtml = htmlTemplate(item);
                 $content.append(itemHtml);
-            }, function(err){
+            }, function (err) {
                 $content.append('Error reading database: ' + err);
             });
         });
@@ -28,7 +33,7 @@ var UI = (function() {
         $('<div />').attr('id', 'loading').text('LOADING').css({
             'margin-left': '40%',
             'color': '#fff',
-            'font-size':'50px'
+            'font-size': '50px'
         }).appendTo($content).fadeIn(10).fadeOut(10).fadeIn(10);
     }
 
@@ -65,23 +70,22 @@ var UI = (function() {
         printSubmitMediaForm: function () {
             $.when(
                 // error?
-                
+
                 $.get('app/html-templates/submit-media.html', function (data) {
-                    if(!clicked){
+                    if (!clicked) {
                         $('#content').html(data);
                         $('#content').hide();
                     }
-                }).then(function(){
-                    if(!clicked){
+                }).then(function () {
+                    if (!clicked) {
                         $('#duration-container').hide();
                         $('#author-container').hide();
                         $('#publisher-container').hide();
-                        $('#trailer-container').hide();    
+                        $('#trailer-container').hide();
                     }
                     clicked = true;
-                }));       
-        },
-        
+                }));
+        }
     };
 
     return UI;
