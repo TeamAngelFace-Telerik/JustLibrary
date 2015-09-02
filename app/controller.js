@@ -2,6 +2,7 @@
 import ui from './ui-controller';
 import submit from './submit-form-operations';
 import $ from '../../node_modules/jquery/dist/jquery.min';
+import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 
 var Controller = (function () {
     var HOME_TITLE = 'Welcome to JustLibrary';
@@ -40,9 +41,9 @@ var Controller = (function () {
         },
         submitMedia: function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);
-            ui.printSubmitMediaForm();
             submit.setupAddMediaMenu();
-
+            ui.printSubmitMediaForm();
+            
             if (localStorage.savedForm !== undefined) {
                 var formObject = JSON.parse(localStorage.savedForm);
                 fillForm(formObject);

@@ -17,6 +17,17 @@ var db = (function(){
 		    function(error){
 		        return error;
 		    });
+		},
+		readById: function(dataType, id){
+			var data = el.data(dataType);
+
+			return data.getById(id)
+			    .then(function(data){
+			        return data.result;
+			    },
+			    function(error){
+			        return error;
+			    });
 		}
 	};
 

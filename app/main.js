@@ -3,9 +3,10 @@ import appController from './controller';
 import $ from '../../node_modules/jquery/dist/jquery.min';
 
 var app = sammy('body', function () {
-    this.get('#/home', function () {
+    this.get('#/home', function (context) {
         $('#submit-media-menu').on('click', function(){
-            appController.submitMedia();
+            context.redirect('#/submit-media');
+            //appController.submitMedia();
         });
         appController.loadHome();
     });

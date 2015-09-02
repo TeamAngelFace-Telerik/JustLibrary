@@ -3,7 +3,6 @@ import book from './media/book';
 import song from './media/song';
 import video from './media/video';
 import db from './db-operations';
-import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 
 var submit = (function(){
 	var addMedia = function(option){

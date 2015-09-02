@@ -3,29 +3,36 @@ import Handlebars from '../bower_components/handlebars/handlebars.min';
 import _ from '../node_modules/underscore/underscore';
 import db from './db-operations';
 
-var UI = (function () {
+var UI = (function() {
     var clicked = false,
-        htmlTemplate;
+        htmlTemplate,
+        htmlTemplateBig;
 
     $.get('app/html-templates/media-item-template.html', function (data) {
         htmlTemplate = Handlebars.compile(data);
+    });
+
+    $.get('app/html-templates/media-item-template-big.html', function (data) {
+        htmlTemplateBig = Handlebars.compile(data);
     });
 
 
     function createMediaItems(mediaType) {
         var items = db.read(mediaType),
             $content = $('#content');
-        items.then(function (data) {
+        items.then(function(data) {
             $content.html('');
             _.each(data, function (item) {
                 item.hasVideo = (item.url.indexOf('youtube.com/watch?v=') > -1);
                 if(item.hasVideo){
                     item.watchVideo = item.url.replace('www.youtube.com/watch?v=', 'www.youtube.com/embed/');
                 }
-
                 var itemHtml = htmlTemplate(item);
                 $content.append(itemHtml);
-            }, function (err) {
+                $('#' + item.Id).on('click', function(){
+                    expandMediaItem(item);
+                });
+            }, function(err){
                 $content.append('Error reading database: ' + err);
             });
         });
@@ -33,59 +40,93 @@ var UI = (function () {
         $('<div />').attr('id', 'loading').text('LOADING').css({
             'margin-left': '40%',
             'color': '#fff',
-            'font-size': '50px'
+            'font-size':'50px'
         }).appendTo($content).fadeIn(10).fadeOut(10).fadeIn(10);
     }
+
+    function expandMediaItem(itemObj){
+        var itemHtml = htmlTemplateBig(itemObj);
+        if (!($('#big-item-container').length)) {
+            $('<div />').attr('id', 'big-item-container').css('z-index', '10').appendTo($('#content'));
+        }
+        if(!($('#filter').length)){
+            $('<div />').attr('id', 'filter').css({
+                width: '100%',
+                height: '100%',
+                background: '#fff',
+                opacity: '10%',
+                'z-index': '5'
+            }).appendTo($('body'));
+        }
+
+
+        $('#big-item-container').html(itemHtml).fadeOut(0).fadeIn(500).on('click', function(){
+                    $(this).fadeOut(500);
+                    $('#filter').hide();
+                });
+    }
+
 
     var UI = {
         setTitle: function (title) {
             $('#page-title').html(title);
         },
         printHome: function () {
+            $('#content').css({
+                height: '',
+                'overflow-y': ''
+            });
             clicked = false;
             $.get('app/html-templates/home.html', function (data) {
                 $('#content').html(data);
             });
+            $('#content').show();
         },
         printMusic: function () {
-            $('#content').html('');
+            $('#content').html('').css({
+                height: '500px',
+                'overflow-y': 'auto'
+            });
+
             clicked = false;
             createMediaItems('Song');
-
+            $('#content').show();
         },
         printVideo: function () {
-            $('#content').html('');
+            $('#content').html('').css({
+                height: '500px',
+                'overflow-y': 'auto'
+            });
             clicked = false;
             createMediaItems('Video');
+            $('#content').show();
         },
         printBooks: function () {
-            $('#content').html('');
+            $('#content').html('').css({
+                height: '500px',
+                'overflow-y': 'auto'
+            });
             clicked = false;
             createMediaItems('Book');
+            $('#content').show();
         },
         printSearchResults: function (results) {
+            $('#content').show();
             $('#content').html('Search is Not implemented!');
             clicked = false;
         },
-        printSubmitMediaForm: function () {
-            $.when(
-                // error?
-
-                $.get('app/html-templates/submit-media.html', function (data) {
-                    if (!clicked) {
-                        $('#content').html(data);
-                        $('#content').hide();
-                    }
-                }).then(function () {
-                    if (!clicked) {
-                        $('#duration-container').hide();
-                        $('#author-container').hide();
-                        $('#publisher-container').hide();
-                        $('#trailer-container').hide();
-                    }
+        printSubmitMediaForm: function () {     
+            $.get('app/html-templates/submit-media.html', function (data) {
+                if(!clicked){
+                    $('#content').html(data);
+                    $('#content').hide().css({
+                        height: '',
+                        'overflow-y': ''
+                    });
                     clicked = true;
-                }));
-        }
+                }
+            });    
+        },        
     };
 
     return UI;
