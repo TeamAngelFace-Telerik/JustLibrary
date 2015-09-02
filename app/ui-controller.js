@@ -70,6 +70,9 @@ var UI = (function() {
         $('#filter').show();
     }
 
+function setHeightofContentDiv(){
+
+}
 
     var UI = {
         setTitle: function (title) {
@@ -86,7 +89,17 @@ var UI = (function() {
             });
             $('#content').show();
         },
-        printMusic: function () {
+        printMedia: function (mediaType) {
+            $('#content').html('').css({
+                height: '500px',
+                'overflow-y': 'auto'
+            });
+
+            clicked = false;
+            createMediaItems(mediaType);
+            $('#content').show();
+        },
+       /* printMusic: function () {
             $('#content').html('').css({
                 height: '500px',
                 'overflow-y': 'auto'
@@ -113,7 +126,7 @@ var UI = (function() {
             clicked = false;
             createMediaItems('Book');
             $('#content').show();
-        },
+        },*/
         printSearchResults: function (results) {
             $('#content').show();
             $('#content').html('Search is Not implemented!');

@@ -23,19 +23,19 @@ var Controller = (function () {
         },
         musicSearch: function () {
             ui.setTitle(MUSIC_TITLE);
-            ui.printMusic();
+            ui.printMedia('Song');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[0];
         },
         videoSearch: function () {
             ui.setTitle(VIDEOS_TITLE);
-            ui.printVideo();
+            ui.printMedia('Video');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[1];
         },
         booksSearch: function () {
             ui.setTitle(BOOKS_TITLE);
-            ui.printBooks();
+            ui.printMedia('Book');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[2];
         },
