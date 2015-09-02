@@ -47,23 +47,27 @@ var UI = (function() {
     function expandMediaItem(itemObj){
         var itemHtml = htmlTemplateBig(itemObj);
         if (!($('#big-item-container').length)) {
-            $('<div />').attr('id', 'big-item-container').css('z-index', '10').appendTo($('#content'));
+            $('<div />').attr('id', 'big-item-container').appendTo($('#content'));
         }
         if(!($('#filter').length)){
             $('<div />').attr('id', 'filter').css({
                 width: '100%',
-                height: '100%',
+                height: '150%',
                 background: '#fff',
-                opacity: '10%',
-                'z-index': '5'
+                opacity: '0.4',
+                'z-index': '5',
+                position: 'absolute',
+                top: '0',
+                left: '0'
             }).appendTo($('body'));
         }
 
 
-        $('#big-item-container').html(itemHtml).fadeOut(0).fadeIn(500).on('click', function(){
-                    $(this).fadeOut(500);
+        $('#big-item-container').html(itemHtml).fadeOut(0).fadeIn(500).css('z-index', '10').on('click', function(){
+                    $(this).fadeOut(500).css('z-index', '');
                     $('#filter').hide();
                 });
+        $('#filter').show();
     }
 
 
