@@ -1,4 +1,5 @@
 import media from './media';
+import utils from '../common/utils';
 
 var book = (function (parent) {
     var book = Object.create(parent);
@@ -18,7 +19,7 @@ var book = (function (parent) {
                 return this.publisher;
             },
             set: function (value) {
-                //validation
+                utils.validatePublisher(value);
                 this.publisher = value;
             }
         },
@@ -27,7 +28,7 @@ var book = (function (parent) {
                 return this.author;
             },
             set: function (value) {
-                //validation
+                utils.validateAuthor(value);
                 this.author = value;
             }
         }

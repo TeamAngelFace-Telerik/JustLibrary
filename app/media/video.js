@@ -1,4 +1,5 @@
 import media from './media';
+import utils from '../common/utils';
 
 var video = (function (parent) {
     var video = Object.create(parent);
@@ -18,7 +19,7 @@ var video = (function (parent) {
                 return this.duration;
             },
             set: function (value) {
-                //validation
+                utils.validateDuration(value);
                 this.duration = value;
             }
         },
@@ -27,7 +28,7 @@ var video = (function (parent) {
                 return this.trailer;
             },
             set: function (value) {
-                //validation
+                utils.validateTrailer(value);
                 this.trailer = value;
             }
         }

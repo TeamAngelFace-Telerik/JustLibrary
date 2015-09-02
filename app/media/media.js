@@ -1,3 +1,5 @@
+import utils from '../common/utils';
+
 var media = (function(){
 	var media = {
 		init: function(mediaObj){
@@ -18,7 +20,7 @@ var media = (function(){
 			  return this.title;
 			},
 			set: function (value) {
-			  //validation
+			  	utils.validateTitle(value);
 				this.title = value;
 			},
 		},
@@ -27,7 +29,7 @@ var media = (function(){
 				return this.description;
 			},
 			set: function (value) {
-				//validation
+				utils.validateDescription(value);
 				this.description = value;
 			}
 		},
@@ -36,7 +38,7 @@ var media = (function(){
 				return this.rating;
 			},
 			set: function (value) {
-				//validation
+				utils.validateRating(value);
 				this.rating = value;
 			}
 		},
@@ -45,7 +47,7 @@ var media = (function(){
 				return this.genre;
 			},
 			set: function (value) {
-				//validation
+				utils.validateGenre(value);
 				this.genre = value;
 			}
 		}

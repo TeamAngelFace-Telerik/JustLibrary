@@ -1,4 +1,5 @@
 import media from './media';
+import utils from '../common/utils';
 
 var song = (function (parent) {
     var song = Object.create(parent);
@@ -17,7 +18,7 @@ var song = (function (parent) {
                 return this.duration;
             },
             set: function (value) {
-                //validation
+                utils.validateDuration(value);
                 this.duration = value;
             }
         }
