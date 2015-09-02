@@ -16,19 +16,14 @@ var submit = (function(){
 			url: $('#url').val(),
 			genre: $('#genre').val(),
 			rating: $('#rating').val()*1,
+			duration: $('#duration').val(),
+			trailer: $('#trailer').val(),
+			author: $('#author').val(),
+			publisher: $('#publisher').val()
 		},
 		newMedia = mediaTypes[option].init(submitFormResult);
 		newMedia.Id = null;
 		
-		if(option !== 2){
-			newMedia.duration = $('#duration').val();
-			if (option) {
-				newMedia.trailer = $('#trailer').val();
-			}
-		} else{
-			newMedia.author = $('#author').val();
-			newMedia.publisher = $('#publisher').val();
-		}
 		// console.log(newMedia);
 		db.create(mediaTypesNames[option], newMedia, function(){
 			return mediaTypesNames[option] + ' added successfully!';
