@@ -1,5 +1,6 @@
 /* globals describe, it, require */
-var expect = require('chai').expect;
+import chai from '../node_modules/chai/chai';
+var expect = chai.expect;
 import media from '../app/media/media';
 import book from '../app/media/book';
 import song from '../app/media/song';
@@ -25,10 +26,21 @@ describe('Creation of media', function () {
 
             expect(fn).not.to.throw();
         });
+        it('Expect media to be created correctly', function () {
+            media.init(testMedia);
+
+            expect(media.url).to.equal(testMedia.url);
+            expect(media.image).to.equal(testMedia.image);
+            expect(media.title).to.equal(testMedia.title);
+            expect(media.description).to.equal(testMedia.description);
+            expect(media.rating).to.equal(testMedia.rating);
+            expect(media.genre).to.equal(testMedia.genre);
+        });
     });
     describe('Invalid creation', function () {
         it('Media should throw with invalid title', function () {
             testMedia.title = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -37,6 +49,7 @@ describe('Creation of media', function () {
         });
         it('Media should throw with invalid description', function () {
             testMedia.description = "Yey be";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -45,6 +58,7 @@ describe('Creation of media', function () {
         });
         it('Media should throw with invalid rating - string', function () {
             testMedia.rating = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -53,6 +67,7 @@ describe('Creation of media', function () {
         });
         it('Media should throw with invalid rating - number', function () {
             testMedia.rating = "138";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -61,6 +76,7 @@ describe('Creation of media', function () {
         });
         it('Media should throw with invalid genre', function () {
             testMedia.genre = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -95,6 +111,7 @@ describe('Creation of book', function () {
     describe('Invalid creation', function () {
         it('Book should throw with invalid publisher', function () {
             testBook.publisher = "38";
+
             function fn() {
                 book.init(testBook);
             }
@@ -103,6 +120,7 @@ describe('Creation of book', function () {
         });
         it('Book should throw with invalid author', function () {
             testBook.author = "Ye";
+
             function fn() {
                 book.init(testBook);
             }
@@ -136,6 +154,7 @@ describe('Creation of song', function () {
     describe('Invalid creation', function () {
         it('Song should throw with invalid duration', function () {
             testSong.duration = "";
+
             function fn() {
                 song.init(testSong);
             }
@@ -170,6 +189,7 @@ describe('Creation of video', function () {
     describe('Invalid creation', function () {
         it('Video should throw with invalid duration', function () {
             testVideo.duration = "";
+
             function fn() {
                 video.init(testVideo);
             }
@@ -178,6 +198,7 @@ describe('Creation of video', function () {
         });
         it('Video should throw with invalid trailer', function () {
             testVideo.trailer = "";
+
             function fn() {
                 video.init(testVideo);
             }
