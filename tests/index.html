@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script type="text/javascript">
+        mocha.setup('bdd');
+        expect = chai.expect;
+    </script>
+
+    <script src="../jspm_packages/system.js"></script>
+    <script src="../config.js"></script>
+    <script>
+        /* global System */
+        System.import('./tests-media-objects').then(function () {
+            mocha.run();
+        });
+    </script>
+</body>
+
+</html>
