@@ -17,9 +17,10 @@ var UI = (function() {
     });
 
 
-    function createMediaItems(mediaType) {
-        var items = db.read(mediaType),
+    function createMediaItems(mediaType, page) {
+        var items = db.read(mediaType, page),
             $content = $('#content');
+
         items.then(function(data) {
             $content.html('');
             _.each(data, function (item) {
@@ -35,6 +36,7 @@ var UI = (function() {
             }, function(err){
                 $content.append('Error reading database: ' + err);
             });
+            $content.append(createPagination(mediaType));
         });
 
         $('<div />').attr('id', 'loading').text('LOADING').css({
@@ -42,6 +44,24 @@ var UI = (function() {
             'color': '#fff',
             'font-size':'50px'
         }).appendTo($content).fadeIn(10).fadeOut(10).fadeIn(10);
+    }
+
+    function createPagination(mediaType){
+        var getCount = db.getItemsCount(mediaType),
+            pagesCount;
+        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination');
+        getCount.then(function(data){
+            pagesCount = Math.ceil(data/3);
+            for(var i = 0; i < pagesCount; i+=1){
+            // TODO attach event to ul
+            $('#results-paging').append($('<li />').attr('id', 'page' + (i+1)).append($('<a />').text(i+1))).unbind().on('click', function(){
+                var pageNumber = ($(this).find('a').first().text())*1;
+                createMediaItems(mediaType, pageNumber);
+                });
+            }
+        });
+
+        return ul;
     }
 
     function expandMediaItem(itemObj){
@@ -70,9 +90,6 @@ var UI = (function() {
         $('#filter').show();
     }
 
-function setHeightofContentDiv(){
-
-}
 
     var UI = {
         setTitle: function (title) {
@@ -89,17 +106,7 @@ function setHeightofContentDiv(){
             });
             $('#content').show();
         },
-        printMedia: function (mediaType) {
-            $('#content').html('').css({
-                height: '500px',
-                'overflow-y': 'auto'
-            });
-
-            clicked = false;
-            createMediaItems(mediaType);
-            $('#content').show();
-        },
-       /* printMusic: function () {
+        printMusic: function () {
             $('#content').html('').css({
                 height: '500px',
                 'overflow-y': 'auto'
@@ -126,7 +133,7 @@ function setHeightofContentDiv(){
             clicked = false;
             createMediaItems('Book');
             $('#content').show();
-        },*/
+        },
         printSearchResults: function (results) {
             $('#content').show();
             $('#content').html('Search is Not implemented!');

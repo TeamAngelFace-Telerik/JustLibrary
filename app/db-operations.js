@@ -6,10 +6,14 @@ var db = (function(){
 			var data = el.data(dataType);
 			return data.create(dataObj).then(successCb, errorCb);
 		},
-		read: function(dataType){
+		read: function(dataType, currentPage){
 			var data = el.data(dataType),
-				query = new Everlive.Query();
+				query = new Everlive.Query(),
+				pageSize = 3,
+				page = currentPage || 1;
 
+
+			query.skip((page-1)*pageSize).take(pageSize);
 			return data.get(query)
 		    .then(function(data){
 		        return data.result;
@@ -27,6 +31,16 @@ var db = (function(){
 			    },
 			    function(error){
 			        return error;
+			    });
+		},
+		getItemsCount: function(dataType){
+			var data = el.data(dataType);
+			return data.count()
+			    .then(function(data){
+			        return data.result;
+			    },
+			    function(error){
+			        alert(JSON.stringify(error));
 			    });
 		}
 	};
