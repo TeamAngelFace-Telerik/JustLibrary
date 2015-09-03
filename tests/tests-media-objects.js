@@ -1,6 +1,22 @@
 /* globals describe, it, require */
+var sw = require('selenium-webdriver');
+var chrome = require('selenium-webdriver/chrome');
+var path = require('chromedriver').path;
+
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
+var driver = new sw.Builder()
+    .withCapabilities(sw.Capabilities.chrome())
+    .build();
+
 var expect = require('chai').expect;
+var chai = require('chai');
 import media from '../app/media/media';
+
+var chaiWebdriver = require('chai-webdriver');
+chai.use(chaiWebdriver(driver));
+
+driver.get('http://github.com');
 
 describe('Creation of media', function () {
     describe('Valid creation', function () {
@@ -24,7 +40,7 @@ describe('Creation of media', function () {
         });
     });
     describe('Invalid creation', function () {
-        
+
 
         // Image and url are validated by browser input fields.
         //it('Media should throw with invalid url', function () {
@@ -44,6 +60,7 @@ describe('Creation of media', function () {
                 genre: "NotSoHorror"
             };
             testMedia.title = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -59,6 +76,7 @@ describe('Creation of media', function () {
                 genre: "NotSoHorror"
             };
             testMedia.description = "Yey be";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -74,6 +92,7 @@ describe('Creation of media', function () {
                 genre: "NotSoHorror"
             };
             testMedia.rating = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -89,6 +108,7 @@ describe('Creation of media', function () {
                 genre: "NotSoHorror"
             };
             testMedia.rating = "138";
+
             function fn() {
                 media.init(testMedia);
             }
@@ -104,6 +124,7 @@ describe('Creation of media', function () {
                 genre: "NotSoHorror"
             };
             testMedia.genre = "Ye";
+
             function fn() {
                 media.init(testMedia);
             }
