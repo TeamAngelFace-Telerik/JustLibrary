@@ -102,9 +102,14 @@ describe('Creation of book', function () {
     describe('Valid creation', function () {
         it('Book to be successfuly created with correct params', function () {
             function fn() {
-                book.init(testBook)
+                book.init(testBook);
             }
             expect(fn).to.not.throw(Error);
+        });
+        it('Expect book to be correctly initialised', function () {
+            book.init(testBook);
+            expect(book.author).to.equal(testBook.author);
+            expect(book.publisher).to.equal(testBook.publisher);
         });
     });
 
@@ -127,7 +132,7 @@ describe('Creation of book', function () {
 
             expect(fn).to.throw();
         });
-    })
+    });
 });
 describe('Creation of song', function () {
     var testSong = {};
@@ -149,6 +154,10 @@ describe('Creation of song', function () {
             }
 
             expect(fn).not.to.throw();
+        });
+        it('Expect song to be correctly initialised', function () {
+            song.init(testSong);
+            expect(song.duration).to.equal(testSong.duration);
         });
     });
     describe('Invalid creation', function () {
@@ -185,6 +194,11 @@ describe('Creation of video', function () {
 
             expect(fn).not.to.throw();
         });
+        it('Expect video to be correctly initialised', function () {
+            video.init(testVideo);
+            expect(video.duration).to.equal(testVideo.duration);
+            expect(video.trailer).to.equal(testVideo.trailer);
+        });
     });
     describe('Invalid creation', function () {
         it('Video should throw with invalid duration', function () {
@@ -205,5 +219,5 @@ describe('Creation of video', function () {
 
             expect(fn).to.throw();
         });
-    })
+    });
 });
