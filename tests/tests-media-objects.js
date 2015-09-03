@@ -1,19 +1,10 @@
-<<<<<<< HEAD
 /* globals describe, it, require */
 var expect = require('chai').expect;
 import media from '../app/media/media';
-=======
-import media from '..app/media/media';
-import book from '..app/media/book';
-import song from '..app/media/song';
-import video from '..app/media/video';
-var expect = require('chai').expect;
->>>>>>> origin/master
 
-
-describe('Creation of media', function() {
+describe('Creation of media', function () {
     describe('Valid creation', function () {
-        it('Media to be successfuly created with correct params', function() {
+        it('Media to be successfuly created with correct params', function () {
             /* 	this.url = mediaObj.url;
              this.image = mediaObj.image;
              this._title = mediaObj.title;
@@ -21,14 +12,14 @@ describe('Creation of media', function() {
              this._rating = mediaObj.rating;
              this._genre = mediaObj.genre;
 */
-             var testMedia = {
-                     url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                     image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                     title: "Media title",
-                     description: "Valid description for media",
-                     rating: 4,
-                     genre: "NotSoHorror"
-                 };
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             expect(media.init(testMedia)).not.to.throw();
         });
     });
@@ -50,8 +41,8 @@ describe('Creation of media', function() {
         //
         //});
         it('Media should throw with invalid title', function () {
-               testMedia.title = "Ye";
-                expect(media.init(testMedia)).to.throw();
+            testMedia.title = "Ye";
+            expect(media.init(testMedia)).to.throw();
         });
         it('Media should throw with invalid description', function () {
             testMedia.description = "Yey be";
@@ -71,9 +62,9 @@ describe('Creation of media', function() {
         });
     })
 });
-describe('Creation of book', function() {
+describe('Creation of book', function () {
     describe('Valid creation', function () {
-        it('Book to be successfuly created with correct params', function() {
+        it('Book to be successfuly created with correct params', function () {
             var testBook = {
                 url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
                 image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
@@ -108,9 +99,9 @@ describe('Creation of book', function() {
         });
     })
 });
-describe('Creation of song', function() {
+describe('Creation of song', function () {
     describe('Valid creation', function () {
-        it('Song to be successfuly created with correct params', function() {
+        it('Song to be successfuly created with correct params', function () {
             var testSong = {
                 url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
                 image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
@@ -139,12 +130,12 @@ describe('Creation of song', function() {
         });
     })
 });
-describe('Creation of video', function() {
+describe('Creation of video', function () {
     describe('Valid creation', function () {
         /*
         this._duration = mediaObj.duration;
         this._trailer = mediaObj.trailer;*/
-        it('Video to be successfuly created with correct params', function() {
+        it('Video to be successfuly created with correct params', function () {
             var testVideo = {
                 url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
                 image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
