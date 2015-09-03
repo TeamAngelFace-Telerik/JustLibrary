@@ -10,7 +10,7 @@ var db = (function () {
         read: function (dataType, currentPage) {
             var data = el.data(dataType),
                 query = new Everlive.Query(),
-                pageSize = 3,
+                pageSize = 2,
                 page = currentPage || 1;
 
 

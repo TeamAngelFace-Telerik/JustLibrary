@@ -51,7 +51,7 @@ var UI = (function () {
             pagesCount;
         var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '30%');
         getCount.then(function (data) {
-            pagesCount = Math.ceil(data / 3);
+            pagesCount = Math.ceil(data / 2);
             for (var i = 0; i < pagesCount; i += 1) {
                 // TODO attach event to ul
                 $('#results-paging').append($('<li />').attr('id', 'page' + (i + 1)).append($('<a />').text(i + 1)));
@@ -109,7 +109,7 @@ var UI = (function () {
         },
         printMedia: function (mediaType) {
             $('#content').html('').css({
-                height: '500px',
+                height: '550px',
                 'overflow-y': 'auto'
             });
             clicked = false;
