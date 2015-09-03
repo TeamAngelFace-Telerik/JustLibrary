@@ -1,134 +1,78 @@
 /* globals describe, it, require */
 var expect = require('chai').expect;
 import media from '../app/media/media';
+import book from '../app/media/book';
+import song from '../app/media/song';
+import video from '../app/media/video';
 
 describe('Creation of media', function () {
+    var testMedia = {};
+    beforeEach(function () {
+        testMedia = {
+            url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+            image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+            title: "Media title",
+            description: "Valid description for media",
+            rating: 4,
+            genre: "NotSoHorror"
+        };
+    });
     describe('Valid creation', function () {
         it('Media to be successfuly created with correct params', function () {
-            /* 	this.url = mediaObj.url;
-             this.image = mediaObj.image;
-             this._title = mediaObj.title;
-             this._description = mediaObj.description;
-             this._rating = mediaObj.rating;
-             this._genre = mediaObj.genre;
-*/
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
-            expect(media.init(testMedia)).not.to.throw;
+            function fn() {
+                media.init(testMedia);
+            }
+
+            expect(fn).not.to.throw();
         });
     });
     describe('Invalid creation', function () {
-        
-
-        // Image and url are validated by browser input fields.
-        //it('Media should throw with invalid url', function () {
-
-        //});
-        //it('Media should throw with invalid image', function () {
-        //
-        //});
-
         it('Media should throw with invalid title', function () {
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
             testMedia.title = "Ye";
             function fn() {
                 media.init(testMedia);
             }
+
             expect(fn).to.throw();
         });
         it('Media should throw with invalid description', function () {
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
             testMedia.description = "Yey be";
             function fn() {
                 media.init(testMedia);
             }
+
             expect(fn).to.throw();
         });
         it('Media should throw with invalid rating - string', function () {
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
             testMedia.rating = "Ye";
             function fn() {
                 media.init(testMedia);
             }
+
             expect(fn).to.throw();
         });
         it('Media should throw with invalid rating - number', function () {
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
             testMedia.rating = "138";
             function fn() {
                 media.init(testMedia);
             }
+
             expect(fn).to.throw();
         });
         it('Media should throw with invalid genre', function () {
-            var testMedia = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Media title",
-                description: "Valid description for media",
-                rating: 4,
-                genre: "NotSoHorror"
-            };
             testMedia.genre = "Ye";
             function fn() {
                 media.init(testMedia);
             }
+
             expect(fn).to.throw();
         });
     });
 });
 describe('Creation of book', function () {
-    describe('Valid creation', function () {
-        it('Book to be successfuly created with correct params', function () {
-            var testBook = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Book title",
-                description: "Valid description for book",
-                rating: 4,
-                genre: "NotSoHorror",
-                publisher: "Goshko",
-                author: "Pak Goshko"
-            };
-            expect(book.init(testBook)).not.to.throw();
-        });
-    });
-    describe('Invalid creation', function () {
-        var testBook = {
+    var testBook = {};
+    beforeEach(function () {
+        testBook = {
             url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
             image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
             title: "Book title",
@@ -138,33 +82,39 @@ describe('Creation of book', function () {
             publisher: "Goshko",
             author: "Pak Goshko"
         };
+    });
+    describe('Valid creation', function () {
+        it('Book to be successfuly created with correct params', function () {
+            function fn() {
+                book.init(testBook)
+            }
+            expect(fn).to.not.throw(Error);
+        });
+    });
+
+    describe('Invalid creation', function () {
         it('Book should throw with invalid publisher', function () {
             testBook.publisher = "38";
-            expect(book.init(testBook)).to.throw();
+            function fn() {
+                book.init(testBook);
+            }
+
+            expect(fn).to.throw();
         });
         it('Book should throw with invalid author', function () {
             testBook.author = "Ye";
-            expect(book.init(testBook)).to.throw();
+            function fn() {
+                book.init(testBook);
+            }
+
+            expect(fn).to.throw();
         });
     })
 });
 describe('Creation of song', function () {
-    describe('Valid creation', function () {
-        it('Song to be successfuly created with correct params', function () {
-            var testSong = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Song title",
-                description: "Valid description for song",
-                rating: 4,
-                genre: "NotSoHorror",
-                duration: "123:32"
-            };
-            expect(song.init(testSong)).not.to.throw();
-        });
-    });
-    describe('Invalid creation', function () {
-        var testSong = {
+    var testSong = {};
+    beforeEach(function () {
+        testSong = {
             url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
             image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
             title: "Song title",
@@ -173,49 +123,66 @@ describe('Creation of song', function () {
             genre: "NotSoHorror",
             duration: "123:32"
         };
+    });
+    describe('Valid creation', function () {
+        it('Song to be successfuly created with correct params', function () {
+            function fn() {
+                song.init(testSong);
+            }
+
+            expect(fn).not.to.throw();
+        });
+    });
+    describe('Invalid creation', function () {
         it('Song should throw with invalid duration', function () {
             testSong.duration = "";
-            expect(song.init(testSong)).to.throw();
+            function fn() {
+                song.init(testSong);
+            }
+
+            expect(fn).to.throw();
         });
     })
 });
 describe('Creation of video', function () {
-    describe('Valid creation', function () {
-        /*
-        this._duration = mediaObj.duration;
-        this._trailer = mediaObj.trailer;*/
-        it('Video to be successfuly created with correct params', function () {
-            var testVideo = {
-                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-                title: "Video title",
-                description: "Valid description for video",
-                rating: 4,
-                genre: "NotSoHorror",
-                duration: "123:32",
-                trailer: "Yabadabado"
-            };
-            expect(video.init(testVideo)).not.to.throw();
-        });
-    });
-    describe('Invalid creation', function () {
-        var testVideo = {
+    var testVideo = {};
+    beforeEach(function () {
+        testVideo = {
             url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
             image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-            title: "Video title",
-            description: "Valid description for video",
+            title: "Song title",
+            description: "Valid description for song",
             rating: 4,
             genre: "NotSoHorror",
             duration: "123:32",
-            trailer: "Yabadabado"
+            trailer: "SomeTrailerURL"
         };
+    });
+    describe('Valid creation', function () {
+        it('Video to be successfuly created with correct params', function () {
+            function fn() {
+                video.init(testVideo);
+            }
+
+            expect(fn).not.to.throw();
+        });
+    });
+    describe('Invalid creation', function () {
         it('Video should throw with invalid duration', function () {
             testVideo.duration = "";
-            expect(video.init(testVideo)).to.throw();
+            function fn() {
+                video.init(testVideo);
+            }
+
+            expect(fn).to.throw();
         });
         it('Video should throw with invalid trailer', function () {
             testVideo.trailer = "";
-            expect(video.init(testVideo)).to.throw();
+            function fn() {
+                video.init(testVideo);
+            }
+
+            expect(fn).to.throw();
         });
     })
 });
