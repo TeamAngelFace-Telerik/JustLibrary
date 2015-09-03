@@ -20,18 +20,11 @@ describe('Creation of media', function () {
                 rating: 4,
                 genre: "NotSoHorror"
             };
-            expect(media.init(testMedia)).not.to.throw();
+            expect(media.init(testMedia)).not.to.throw;
         });
     });
     describe('Invalid creation', function () {
-        var testMedia = {
-            url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
-            image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
-            title: "Media title",
-            description: "Valid description for media",
-            rating: 4,
-            genre: "NotSoHorror"
-        };
+        
 
         // Image and url are validated by browser input fields.
         //it('Media should throw with invalid url', function () {
@@ -40,27 +33,83 @@ describe('Creation of media', function () {
         //it('Media should throw with invalid image', function () {
         //
         //});
+
         it('Media should throw with invalid title', function () {
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             testMedia.title = "Ye";
-            expect(media.init(testMedia)).to.throw();
+            function fn() {
+                media.init(testMedia);
+            }
+            expect(fn).to.throw();
         });
         it('Media should throw with invalid description', function () {
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             testMedia.description = "Yey be";
-            expect(media.init(testMedia)).to.throw();
+            function fn() {
+                media.init(testMedia);
+            }
+            expect(fn).to.throw();
         });
         it('Media should throw with invalid rating - string', function () {
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             testMedia.rating = "Ye";
-            expect(media.init(testMedia)).to.throw();
+            function fn() {
+                media.init(testMedia);
+            }
+            expect(fn).to.throw();
         });
         it('Media should throw with invalid rating - number', function () {
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             testMedia.rating = "138";
-            expect(media.init(testMedia)).to.throw();
+            function fn() {
+                media.init(testMedia);
+            }
+            expect(fn).to.throw();
         });
         it('Media should throw with invalid genre', function () {
+            var testMedia = {
+                url: "https://netbeans.org/kb/docs/webclient/html5-js-support.html",
+                image: "https://pbs.twimg.com/profile_images/461143248379998208/ULLAcf3x.jpeg",
+                title: "Media title",
+                description: "Valid description for media",
+                rating: 4,
+                genre: "NotSoHorror"
+            };
             testMedia.genre = "Ye";
-            expect(media.init(testMedia)).to.throw();
+            function fn() {
+                media.init(testMedia);
+            }
+            expect(fn).to.throw();
         });
-    })
+    });
 });
 describe('Creation of book', function () {
     describe('Valid creation', function () {
