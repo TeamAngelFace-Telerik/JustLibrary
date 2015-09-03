@@ -1,8 +1,5 @@
-/*import book from '../app/media/book';
-import song from '../app/media/song';
-import video from '../app/media/video';*/
+/* globals describe, it, require */
 var expect = require('chai').expect;
-//var media = require('../app/media/media');
 import media from '../app/media/media';
 
 
