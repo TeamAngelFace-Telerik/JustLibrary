@@ -1,7 +1,7 @@
 import $ from '../../node_modules/jquery/dist/jquery.min';
 import media from '../media/media';
 import _ from '../../node_modules/underscore/underscore';
-import db from '../db-operations';
+//import db from '../db-operations';
 
 var utils = (function () {
     var CONSTS = {
@@ -65,7 +65,7 @@ var utils = (function () {
         return input >= min && input <= max;
     };
 
-    var submitForm = function () {
+    /*var submitForm = function () {
         var submitFormResult = {
                 title: $('#title').val(),
                 description: $('#description').val(),
@@ -82,9 +82,9 @@ var utils = (function () {
         }, function (err) {
             console.log(err);
         });
-    };
+    };*/
 
-    var printMedia = function (mediaType) {
+    /*var printMedia = function (mediaType) {
         var media = db.read(mediaType);
         media.then(function (data) {
             console.log(mediaType + 's: ');
@@ -95,36 +95,36 @@ var utils = (function () {
                 console.log('----------------------------------');
             });
         });
-    };
+    };*/
 
     return {
-        isValid,
-        submitForm,
-        printMedia,
+        isValid: 'isValid',
+        //submitForm,
+        //printMedia,
         validateTitle: function (title) {
-                validateString(title, CONSTS.TITLE.MIN, CONSTS.TITLE.MAX);
-            },
-            validateDescription: function (description) {
-                validateString(description, CONSTS.DESCRIPTION.MIN, CONSTS.DESCRIPTION.MAX);
-            },
-            validateGenre: function (genre) {
-                validateString(genre, CONSTS.GENRE.MIN, CONSTS.GENRE.MAX);
-            },
-            validateRating: function (rating) {
-                validateNumber(rating, CONSTS.RATING.MIN, CONSTS.RATING.MAX);
-            },
-            validateDuration: function (duration) {
-                validateString(duration, CONSTS.DURATION.MIN, CONSTS.DURATION.MAX);
-            },
-            validateTrailer: function (trailer) {
-                validateString(trailer, CONSTS.TRAILER.MIN, CONSTS.TRAILER.MAX);
-            },
-            validatePublisher: function (publisher) {
-                validateString(publisher, CONSTS.PUBLISHER.MIN, CONSTS.PUBLISHER.MAX);
-            },
-            validateAuthor: function (author) {
-                validateString(author, CONSTS.AUTHOR.MIN, CONSTS.AUTHOR.MAX);
-            }
+            validateString(title, CONSTS.TITLE.MIN, CONSTS.TITLE.MAX);
+        },
+        validateDescription: function (description) {
+            validateString(description, CONSTS.DESCRIPTION.MIN, CONSTS.DESCRIPTION.MAX);
+        },
+        validateGenre: function (genre) {
+            validateString(genre, CONSTS.GENRE.MIN, CONSTS.GENRE.MAX);
+        },
+        validateRating: function (rating) {
+            validateNumber(rating, CONSTS.RATING.MIN, CONSTS.RATING.MAX);
+        },
+        validateDuration: function (duration) {
+            validateString(duration, CONSTS.DURATION.MIN, CONSTS.DURATION.MAX);
+        },
+        validateTrailer: function (trailer) {
+            validateString(trailer, CONSTS.TRAILER.MIN, CONSTS.TRAILER.MAX);
+        },
+        validatePublisher: function (publisher) {
+            validateString(publisher, CONSTS.PUBLISHER.MIN, CONSTS.PUBLISHER.MAX);
+        },
+        validateAuthor: function (author) {
+            validateString(author, CONSTS.AUTHOR.MIN, CONSTS.AUTHOR.MAX);
+        }
     };
 }());
 
