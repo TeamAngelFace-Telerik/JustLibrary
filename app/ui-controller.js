@@ -49,16 +49,17 @@ var UI = (function() {
     function createPagination(mediaType){
         var getCount = db.getItemsCount(mediaType),
             pagesCount;
-        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination');
+        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '30%');
         getCount.then(function(data){
             pagesCount = Math.ceil(data/3);
             for(var i = 0; i < pagesCount; i+=1){
             // TODO attach event to ul
-            $('#results-paging').append($('<li />').attr('id', 'page' + (i+1)).append($('<a />').text(i+1))).unbind().on('click', function(){
+                $('#results-paging').append($('<li />').attr('id', 'page' + (i+1)).append($('<a />').text(i+1)));
+            }
+            ul.on('click', 'li', function(){
                 var pageNumber = ($(this).find('a').first().text())*1;
                 createMediaItems(mediaType, pageNumber);
                 });
-            }
         });
 
         return ul;
