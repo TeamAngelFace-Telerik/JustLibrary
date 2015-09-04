@@ -38,13 +38,13 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <form id="search-form" class="navbar-form navbar-left" role="search" action="#/search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input id="search" type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <ul class="nav navbar-nav social-share-buttons">
+                <ul id="social-buttons" class="nav navbar-nav social-share-buttons hidden">
                     <li><div class="fb-share-button" data-href="https://www.google.com"  data-width="200" data-type="button_count" >Share</div></li>
                     <li id="share-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-size="default" data-dnt="true">Tweet</a></li>
                 </ul>
@@ -54,16 +54,18 @@
 </header>
 <div id="content"></div>
 
-<script src="app/common/social-share.js"></script>
 <script src="jquery.js"></script>
+<script src="app/common/social-share.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
+<script src="app/common/social-share.js"></script>
 <!--<script src="https://bs-static.cdn.telerik.com/1.5.4/everlive.all.min.js"></script>-->
 <script>
     /* global System */
     System.import('app/main');
 </script>
+
 </body>
 
 </html>

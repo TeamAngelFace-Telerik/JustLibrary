@@ -104,7 +104,7 @@ var UI = (function () {
             clicked = false;
             $.get('app/html-templates/home.html', function (data) {
                 $('#content').html(data);
-            });
+            }).then($('#social-buttons').removeClass('hidden'));
             $('#content').show();
         },
         printMedia: function (mediaType) {

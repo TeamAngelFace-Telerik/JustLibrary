@@ -5,14 +5,12 @@ import $ from '../../node_modules/jquery/dist/jquery.min';
 import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 
 var Controller = (function () {
-    var HOME_TITLE = 'Welcome to JustLibrary';
-    var MUSIC_TITLE = 'Music';
-    var VIDEOS_TITLE = 'Video';
-    var BOOKS_TITLE = 'Books';
-    var SUBMIT_MEDIA_TITLE = 'Submit new media';
-    var AVAILABLE_FILTERS = ['songs', 'videos', 'books'];
-    var filter;
-    var searchResults;
+    var HOME_TITLE = 'Welcome to JustLibrary',
+        MUSIC_TITLE = 'Music',
+        VIDEOS_TITLE = 'Video',
+        BOOKS_TITLE = 'Books',
+        SUBMIT_MEDIA_TITLE = 'Submit new media',
+        SEARCH = 'Search results';
 
     var Controller = {
         loadHome: function () {
@@ -21,23 +19,27 @@ var Controller = (function () {
             // filter = '';
             // searchResults = '';
         },
-        musicSearch: function () {
+        printMusic: function () {
             ui.setTitle(MUSIC_TITLE);
             ui.printMedia('Song');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[0];
         },
-        videoSearch: function () {
+        printVideo: function () {
             ui.setTitle(VIDEOS_TITLE);
             ui.printMedia('Video');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[1];
         },
-        booksSearch: function () {
+        printBooks: function () {
             ui.setTitle(BOOKS_TITLE);
             ui.printMedia('Book');
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[2];
+        },
+        search: function(text, mediaType){
+            ui.setTitle(SEARCH);
+            console.log('SEARCH');
         },
         submitMedia: function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);
