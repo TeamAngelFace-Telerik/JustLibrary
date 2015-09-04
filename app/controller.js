@@ -37,9 +37,9 @@ var Controller = (function () {
             // ui.printSearchResults(searchResults);
             // filter = AVAILABLE_FILTERS[2];
         },
-        search: function(text, mediaType){
+        search: function(mediaType, text){
             ui.setTitle(SEARCH);
-            console.log('SEARCH');
+            ui.printSearchResults(mediaType, text);
         },
         submitMedia: function () {
             ui.setTitle(SUBMIT_MEDIA_TITLE);

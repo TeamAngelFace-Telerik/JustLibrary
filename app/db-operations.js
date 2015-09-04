@@ -7,14 +7,19 @@ var db = (function () {
             var data = el.data(dataType);
             return data.create(dataObj).then(successCb, errorCb);
         },
-        read: function (dataType, currentPage) {
+        read: function (dataType, currentPage, searchText) {
             var data = el.data(dataType),
                 query = new Everlive.Query(),
                 pageSize = 2,
-                page = currentPage || 1;
+                page = currentPage || 1,
+                regexx = new RegExp(searchText, 'gi');
 
-
-            query.skip((page - 1) * pageSize).take(pageSize);
+            if (searchText) {
+                query.where().regex('title', regexx).done().skip((page - 1) * pageSize).take(pageSize);    
+            } else {
+                query.skip((page - 1) * pageSize).take(pageSize);
+            }
+            
             return data.get(query)
                 .then(function (data) {
                         return data.result;

@@ -1,6 +1,13 @@
 import sammy from '../node_modules/sammy/lib/min/sammy-latest.min';
 import appController from './controller';
 import $ from '../../node_modules/jquery/dist/jquery.min';
+import db from './db-operations';
+
+$('#search').unbind().on('click', function(){
+    $('#search').blur(function(){
+        $('#search-btn').attr('href', '').attr('href', '#/search/' + $('#search').val());
+    });
+});
 
 var app = sammy('body', function () {
     var mediaType;
@@ -13,35 +20,34 @@ var app = sammy('body', function () {
     });
 
     this.get('#/video', function () {
-        appController.printVideo();
         mediaType = 'Video';
+        appController.printVideo();
     });
 
     this.get('#/music', function () {
-        appController.printMusic();
         mediaType = 'Song';
+        appController.printMusic();
     });
 
     this.get('#/books', function () {
-        appController.printBooks();
         mediaType = 'Book';
+        appController.printBooks();
     });
 
     this.get('#/submit-media', function () {
         appController.submitMedia();
     });
 
-    this.get('#/search/:text', function (context) {
-        console.log(this.params['text']);
-        $('#search-form').submit(function(){
-            var searchText = $(this).find('input').val();
-            context.redirect('#/search/' + searchText);
-        });
-        appController.search($('#search').val(), mediaType);
+    this.get('#/search/:text', function () {
+        var searchText = $('#search').val();
+        $('#search').val('');
+        appController.search(mediaType, searchText);
     });
 });
 
-
-
 app.run('#/home');
 
+// var test = db.read('Song', 1, 'Seek');
+// test.then(function(data){
+//     console.log(JSON.stringify(data));
+// });

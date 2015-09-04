@@ -17,10 +17,9 @@ var UI = (function () {
     });
 
 
-    function createMediaItems(mediaType, page) {
-        var items = db.read(mediaType, page),
+    function createMediaItems(mediaType, page, searchText) {
+        var items = !!searchText ? db.read(mediaType, page, searchText): db.read(mediaType, page),
             $content = $('#content');
-
         items.then(function (data) {
             $content.html('');
             _.each(data, function (item) {
@@ -49,7 +48,7 @@ var UI = (function () {
     function createPagination(mediaType) {
         var getCount = db.getItemsCount(mediaType),
             pagesCount;
-        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '50%');
+        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '30%');
         getCount.then(function (data) {
             pagesCount = Math.ceil(data / 2);
             for (var i = 0; i < pagesCount; i += 1) {
@@ -116,10 +115,14 @@ var UI = (function () {
             createMediaItems(mediaType);
             $('#content').show();
         },
-        printSearchResults: function (results) {
-            $('#content').show();
-            $('#content').html('Search is Not implemented!');
+        printSearchResults: function (mediaType, searchText) {
+            $('#content').html('').css({
+                height: '550px',
+                'overflow-y': 'auto'
+            });
             clicked = false;
+            createMediaItems(mediaType, 1, searchText);
+            $('#content').show();
         },
         printSubmitMediaForm: function () {
             $.get('app/html-templates/submit-media.html', function (data) {
