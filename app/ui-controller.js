@@ -49,7 +49,7 @@ var UI = (function () {
     function createPagination(mediaType) {
         var getCount = db.getItemsCount(mediaType),
             pagesCount;
-        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '30%');
+        var ul = $('<ul />').attr('id', 'results-paging').addClass('pagination').css('margin-left', '50%');
         getCount.then(function (data) {
             pagesCount = Math.ceil(data / 2);
             for (var i = 0; i < pagesCount; i += 1) {
