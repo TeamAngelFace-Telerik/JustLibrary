@@ -1,17 +1,17 @@
-<div id="{{Id}}" class="single-item-container" style="padding: 5px; border: 1px solid #fff; width: 80%; margin: 20px 9% 0 9%">
+<div id="{{Id}}" class="single-item-container" style="padding: 5px; width: 80%; margin: 20px 9% 0 9%">
 	<div class="image-container" style="border: 1px solid #fff; display: inline-block; vertical-align: top">
 		<img src="{{image}}" alt="{{title}}" class="item-image" width="200" style="min-height:200px" />
 	</div>
-	<div class="info-container" style="border: 1px solid #fff; height: 202px; display: inline-block; vertical-align: top; width: 80%;">
+	<div class="info-container" style="border: 1px solid #fff;overflow: hidden ; border-radius: 10px; padding-top: 20px; height: 202px; display: inline-block; vertical-align: top; width: 80%;">
 		<ul class="item-info-list" style="list-style-type: none; font-size: 18px;">
-			<li>Title: {{title}}</li>
+			<li><strong style="color: whitesmoke"> Title: </strong>{{title}}</li>
 			{{#if author}}
-			<li>Author: {{author}}</li>
+			<li><strong style="color: whitesmoke">Author:</strong> {{author}}</li>
 			{{/if}}
-			<li>Description: {{description}}</li>
-			<li>Rating: {{rating}}</li>
+			<li><strong style="color: whitesmoke">Description: </strong> {{description}}</li>
+			<li><strong style="color: whitesmoke">Rating: </strong> {{rating}}</li>
 			{{#if duration}}
-			<li>Duration: {{duration}}</li>
+			<li><strong style="color: whitesmoke">Duration: </strong> {{duration}}</li>
 			{{/if}}
 		</ul>
 	</div>
