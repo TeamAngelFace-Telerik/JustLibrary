@@ -10,3 +10,10 @@ You can search and brouse the results
 and add your own media to the library.
 ![submit media form](https://raw.githubusercontent.com/TeamAngelFace-Telerik/JustLibrary/master/screenshots/submit.jpg)
 Feel free to share us on facebook and twitter.
+##The team
+* Daniel Popov - dany90
+* Димитър Топалов - topalkata
+* Адриан Апостолов - Adrian.Apostolov
+* Владимир Илиев - DanteSparda
+* Петър Диманов - pdimanov
+* Петър Милчев - pepinho24
