@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
     <meta charset="UTF-8">
     <title>Angel Face Media Catalog</title>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap-slate-theme.css" rel="stylesheet"/>
-    <link href="app/common/styles.css" rel="stylesheet"/>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./lib/bootstrap-slate-theme.css" rel="stylesheet" />
+    <link href="app/common/styles.css" rel="stylesheet" />
 </head>
-<body>
-<header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">JustLibrary</div>
-            </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/home">Home</a></li>
-                    <li><a href="#/music">Music</a></li>
-                    <li><a href="#/video">Video</a></li>
-                    <li><a href="#/books">Books</a></li>
-                    <li id="submit-media-menu" class="dropdown" id="add-media-dropdown">
-                        <a href="#/submit-media" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Submit
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand">JustLibrary</div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/home">Home</a></li>
+                        <li><a href="#/music">Music</a></li>
+                        <li><a href="#/video">Video</a></li>
+                        <li><a href="#/books">Books</a></li>
+                        <li id="submit-media-menu" class="dropdown" id="add-media-dropdown">
+                            <a href="#/submit-media" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Submit
                             Media
                             <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li id="submit-music-form"><a href="#/submit-media">Music</a></li>
-                            <li id="submit-video-form"><a href="#/submit-media">Video</a></li>
-                            <li id="submit-book-form"><a href="#/submit-media">Book</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form id="search-form" class="navbar-form navbar-left" role="search" action="#/search">
-                    <div class="form-group">
-                        <input id="search" type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul id="social-buttons" class="nav navbar-nav social-share-buttons hidden">
-                    <li><div class="fb-share-button" data-href="https://www.google.com"  data-width="200" data-type="button_count" >Share</div></li>
-                    <li id="share-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-size="default" data-dnt="true">Tweet</a></li>
-                </ul>
+                            <ul class="dropdown-menu" role="menu">
+                                <li id="submit-music-form"><a href="#/submit-media">Music</a></li>
+                                <li id="submit-video-form"><a href="#/submit-media">Video</a></li>
+                                <li id="submit-book-form"><a href="#/submit-media">Book</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form id="search-form" class="navbar-form navbar-left" role="search" action="#/search">
+                        <div class="form-group">
+                            <input id="search" type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul id="social-buttons" class="nav navbar-nav social-share-buttons hidden">
+                        <li>
+                            <div class="fb-share-button" data-href="https://www.google.com" data-width="200" data-type="button_count">Share</div>
+                        </li>
+                        <li id="share-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-size="default" data-dnt="true">Tweet</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-<div id="content"></div>
+        </nav>
+    </header>
+    <div id="content"></div>
 
-<script src="jquery.js"></script>
-<script src="app/common/social-share.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="jspm_packages/system.js"></script>
-<script src="config.js"></script>
-<script src="app/common/social-share.js"></script>
-<!--<script src="https://bs-static.cdn.telerik.com/1.5.4/everlive.all.min.js"></script>-->
-<script>
-    /* global System */
-    System.import('app/main');
-</script>
+    <script src="jquery.js"></script>
+    <script src="app/common/social-share.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script src="app/common/social-share.js"></script>
+    <!--<script src="https://bs-static.cdn.telerik.com/1.5.4/everlive.all.min.js"></script>-->
+    <script>
+        /* global System */
+        System.import('app/main');
+    </script>
 
 </body>
 
